@@ -95,7 +95,7 @@ select Surname, Position from Teachers where IsProfessor = 0;
 select Surname, Position, Salary, Premium from Teachers where Premium between 160 and 550;
 
 -- 10 query
-select Surname, Salary from Teachers
+select Surname, Salary from Teachers;
 
 -- 11 query
 select Surname, Position from Teachers where EmploymentDate < '01.01.2000';
