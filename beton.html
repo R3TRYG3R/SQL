@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beton Məhsulları</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    />
+    <style>
+        :root {
+            --grad: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
+            --text-dark: #2b2b2b;
+            --text-gray: #555;
+            --bg: #f3f6fa;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .section-title {
+            max-width: 1000px;
+            margin: 0 auto 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: clamp(20px, 2.5vw, 32px);
+            line-height: 1.2;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 4px;
+            margin: 0 auto 0;
+            border-radius: 999px;
+            background: var(--grad);
+        }
+
+        .intro-text {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-gray);
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: stretch;
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card h2 {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 10px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .vertical-card img {
+            height: 250px;
+        }
+
+        .horizontal-card img {
+            height: 150px;
+        }
+
+        .card .desc {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card .desc b {
+            color: var(--text-dark);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .card .subtitle {
+            font-weight: 600;
+            margin: 6px 0;
+            font-size: 12px;
+            color: #0054A6;
+            letter-spacing: 0.3px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px;
+        }
+
+        .card ul li {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .card ul li::before {
+            content: "✔";
+            margin-right: 6px;
+            font-weight: bold;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            background: var(--grad);
+            color: #fff;
+            text-align: center;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            box-shadow: 0 5px 15px rgba(0, 174, 239, 0.3);
+            margin-top: auto;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 174, 239, 0.4);
+            cursor: pointer;
+        }
+
+        @media (min-width: 600px) {
+            .grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid { 
+                grid-template-columns: repeat(3, 1fr); 
+            }
+        }
+
+        .card.is-hidden-even { 
+            display: none !important; 
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 12px;
+                border-radius: 14px;
+            }
+            .card::after {
+                border-radius: 14px;
+            }
+            .card h2 {
+                font-size: 13px;
+                text-align: center;
+            }
+            .card img {
+                height: 180px;
+            }
+            .vertical-card img {
+                height: 200px;
+            }
+            .horizontal-card img {
+                height: 120px;
+            }
+            .card .desc {
+                font-size: 11px;
+            }
+            .card .subtitle {
+                font-size: 11px;
+            }
+            .card ul li {
+                font-size: 11px;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+                padding: 10px 0;
+                align-self: center;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="section-title">Beton Məhsulları</h1>
+    
+    <div class="intro-text">
+        Beton, sürətlə inkişaf edən və urbanizasiya olunan dünyanın tələblərinə cavab verən ən etibarlı və çoxfunksiyalı tikinti materialıdır. Universallığı, izolyasiya xüsusiyyətləri və təkrar emala yararlılığı sayəsində o, həm yaşayış binalarında, həm də sənaye və infrastruktur layihələrində geniş tətbiq olunur. Öz fiziki və ekoloji üstünlükləri ilə beton müasir tikinti sənayesində əvəzolunmaz rol oynayır.
+        <br><br>
+        Bu xüsusiyyətlərinə görə körpülər, tunellər və müasir binaları betonsuz təsəvvür etmək mümkün deyil. Möhkəmliyi, formalaşdırılma çevikliyi və davamlılığı ilə fərqlənən beton, memarlar tərəfindən məqsədyönlü şəkildə istifadə edildikdə və tikinti mütəxəssisləri tərəfindən ustalıqla hazırlandıqda, həm estetik dəyərlər yaradır, həm də yüksək performanslı infrastrukturun formalaşmasına və dairəvi iqtisadiyyatın inkişafına mühüm töhfə verir.
+    </div>
+
+    <div class="grid">
+        <!-- Вертикальная карточка 1 -->
+        <div class="card vertical-card">
+            <h2>Müasir Beton Texnologiyaları</h2>
+            <img
+                src="https://www.holcim.az/sites/azerbaijan/files/img/beton_view_1.webp"
+                alt="Beton texnologiyaları"
+            />
+            <div class="desc">
+                <b>Yüksək Performanslı Beton</b><br />
+                Müasir texnologiyalar əsasında hazırlanan beton məhsulları.
+            </div>
+            <div class="subtitle">XÜSUSİYYƏTLƏRİ:</div>
+            <ul>
+                <li>Yüksək möhkəmlik və davamlılıq</li>
+                <li>Ekoloji təmizlik</li>
+                <li>Çevik formalaşdırma imkanları</li>
+                <li>Yaxşı izolyasiya xüsusiyyətləri</li>
+            </ul>
+            <a href="#" class="btn">Ətraflı Məlumat</a>
+        </div>
+
+        <!-- Вертикальная карточка 2 -->
+        <div class="card vertical-card">
+            <h2>Beton İstehsalı və Keyfiyyət</h2>
+            <img
+                src="https://www.holcim.az/sites/azerbaijan/files/img/beton_view_2.webp"
+                alt="Beton istehsalı"
+            />
+            <div class="desc">
+                <b>Keyfiyyətli İstehsal Prosesi</b><br />
+                Beynəlxalq standartlara uyğun beton istehsalı.
+            </div>
+            <div class="subtitle">TƏTBİQ SAHƏSİ:</div>
+            <ul>
+                <li>Yaşayış binaları</li>
+                <li>Sənaye obyektləri</li>
+                <li>İnfrastruktur layihələri</li>
+                <li>Memarlıq konstruksiyaları</li>
+            </ul>
+            <a href="#" class="btn">Sertifikat</a>
+        </div>
+
+        <!-- Горизонтальная карточка 1 -->
+        <div class="card horizontal-card">
+            <h2>Betonun Tətbiqi</h2>
+            <img
+                src="https://www.holcim.az/sites/azerbaijan/files/img/beton_view_3.webp"
+                alt="Beton tətbiqi"
+            />
+            <div class="desc">
+                <b>Geniş Tətbiq Sahələri</b><br />
+                Betonun müxtəlif sahələrdə tətbiqi və istifadəsi.
+            </div>
+            <div class="subtitle">ÜSTÜNLÜKLƏRİ:</div>
+            <ul>
+                <li>Universallıq və çeviklik</li>
+                <li>Uzunömürlülük</li>
+                <li>Ekoloji uyğunluq</li>
+            </ul>
+            <a href="#" class="btn">Daha Çox</a>
+        </div>
+
+        <!-- Горизонтальная карточка 2 -->
+        <div class="card horizontal-card">
+            <h2>Beton Texnologiyaları</h2>
+            <img
+                src="https://www.holcim.az/sites/azerbaijan/files/img/beton_view_4.webp"
+                alt="Beton texnologiyaları"
+            />
+            <div class="desc">
+                <b>İnnovativ Həllər</b><br />
+                Müasir beton texnologiyaları və innovasiyalar.
+            </div>
+            <div class="subtitle">XÜSUSİYYƏTLƏRİ:</div>
+            <ul>
+                <li>Yüksək keyfiyyət</li>
+                <li>Çevik istehsal</li>
+                <li>Ekoloji təmizlik</li>
+            </ul>
+            <a href="#" class="btn">Texnologiyalar</a>
+        </div>
+
+        <!-- Горизонтальная карточка 3 -->
+        <div class="card horizontal-card">
+            <h2>Betonun Gələcəyi</h2>
+            <img
+                src="https://www.holcim.az/sites/azerbaijan/files/img/beton_view_5.webp"
+                alt="Betonun gələcəyi"
+            />
+            <div class="desc">
+                <b>Dairəvi İqtisadiyyat</b><br />
+                Betonun təkrar emala yararlılığı və ekoloji uyğunluğu.
+            </div>
+            <div class="subtitle">GƏLƏCƏK VİZYONU:</div>
+            <ul>
+                <li>Təkrar emala yararlılıq</li>
+                <li>Ekoloji uyğunluq</li>
+                <li>İnnovativ həllər</li>
+            </ul>
+            <a href="#" class="btn">Gələcək Planları</a>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            function equalizeGrid(grid){
+                const cards = Array.from(grid.querySelectorAll('.card'));
+                if (!cards.length) return;
+
+                cards.forEach(card => {
+                    const sub = card.querySelector('.subtitle');
+                    if (sub) sub.style.marginTop = '';
+                });
+
+                const tolerance = 6;
+                const rows = [];
+                const positioned = cards
+                    .map(el => ({ el, top: el.getBoundingClientRect().top }))
+                    .sort((a,b) => a.top - b.top);
+
+                positioned.forEach(item => {
+                    const row = rows.find(r => Math.abs(r.top - item.top) <= tolerance);
+                    if (row) {
+                        row.cards.push(item.el);
+                        row.top = Math.min(row.top, item.top);
+                    } else {
+                        rows.push({ top: item.top, cards: [item.el] });
+                    }
+                });
+
+                rows.forEach(row => {
+                    const subs = row.cards
+                        .map(c => c.querySelector('.subtitle'))
+                        .filter(Boolean);
+                    if (subs.length < 2) return;
+
+                    const baseline = Math.max(...subs.map(s => s.getBoundingClientRect().top));
+                    subs.forEach(s => {
+                        const curTop = s.getBoundingClientRect().top;
+                        const diff = Math.round(baseline - curTop);
+                        if (diff > 0) {
+                            const mt = parseFloat(getComputedStyle(s).marginTop) || 0;
+                            s.style.marginTop = (mt + diff) + 'px';
+                        }
+                    });
+                });
+            }
+
+            function runAll(){
+                document.querySelectorAll('.grid').forEach(equalizeGrid);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', runAll, { once: true });
+            } else {
+                runAll();
+            }
+            window.addEventListener('load', runAll);
+
+            let t, raf;
+            function schedule(){
+                clearTimeout(t);
+                if (raf) cancelAnimationFrame(raf);
+                t = setTimeout(() => { raf = requestAnimationFrame(runAll); }, 50);
+            }
+            window.addEventListener('resize', schedule);
+
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(runAll);
+            }
+
+            document.querySelectorAll('.grid img').forEach(img => {
+                if (!img.complete) {
+                    img.addEventListener('load', schedule);
+                    img.addEventListener('error', schedule);
+                }
+            });
+
+            if ('ResizeObserver' in window) {
+                const ro = new ResizeObserver(schedule);
+                document.querySelectorAll('.grid').forEach(g => ro.observe(g));
+            }
+            if ('MutationObserver' in window) {
+                const mo = new MutationObserver(schedule);
+                document.querySelectorAll('.grid').forEach(g => mo.observe(g, { childList: true, subtree: true, characterData: true }));
+            }
+        })();
+    </script>
+</body>
+</html>
