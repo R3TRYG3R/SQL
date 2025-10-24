@@ -394,14 +394,14 @@
             .logo {
                 max-width: 150px;
             }
-            .ecopact-text {
-                padding: 30px 20px;
+            .image-text {
+                padding: 20px 15px;
             }
-            .ecopact-text h2 {
-                font-size: 22px;
+            .image-text h2 {
+                font-size: 18px;
             }
-            .ecopact-text p {
-                font-size: 14px;
+            .image-text p {
+                font-size: 13px;
             }
             .ecopact-features {
                 grid-template-columns: 1fr;
@@ -418,12 +418,6 @@
             }
             .ecopact-feature p {
                 font-size: 13px;
-            }
-            .ecopact-additional-text {
-                padding: 30px 20px;
-            }
-            .ecopact-additional-text p {
-                font-size: 14px;
             }
             .ecopact-images {
                 grid-template-columns: 1fr;
@@ -526,53 +520,6 @@
             padding: 0 20px;
         }
 
-        .ecopact-text {
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .ecopact-text::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 20px;
-            padding: 2px;
-            background: var(--grad);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
-
-        .ecopact-text h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ecopact-text p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-gray);
-            margin: 0;
-            position: relative;
-            z-index: 1;
-        }
-
         .ecopact-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -613,25 +560,25 @@
             margin: 0;
         }
 
-        .ecopact-additional-text {
+        .image-text {
             background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
-            padding: 40px;
-            border-radius: 20px;
+            padding: 30px;
+            border-radius: 16px;
             text-align: center;
             border: 2px solid transparent;
             background-clip: padding-box;
             position: relative;
-            margin-bottom: 30px;
+            margin-top: 20px;
         }
 
-        .ecopact-additional-text::before {
+        .image-text::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 2px;
             background: var(--grad);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -639,9 +586,21 @@
             mask-composite: exclude;
         }
 
-        .ecopact-additional-text p {
-            font-size: 16px;
-            line-height: 1.7;
+        .image-text h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-text p {
+            font-size: 14px;
+            line-height: 1.6;
             color: var(--text-gray);
             margin: 0;
             position: relative;
@@ -849,11 +808,6 @@
     </div>
 
     <div class="ecopact-section">
-        <div class="ecopact-text">
-            <h2>ECOPact - Aşağı Karbonlu Beton</h2>
-            <p>Hazırda tikinti sektoru dünyada CO2 tullantılarının təxminən 40%-ni təşkil edir və dekarbonizasiyası prosesini sıfır tullantı səviyyəsinə malik gələcək üçün mühüm əhəmiyyət kəsb edir. Holcim artıq dünyada geniş çeşidli aşağı karbonlu beton istehsalına başlamışdır. Bu həllərdən biri, geniş tədqiqat və sınaqlar nəticəsində yaradılan innovativ dizayna malik ECOPact betonudur. Bu aşağı karbonlu beton seriyası binalarda, infrastruktur layihələrdə karbon tullantılarını ən azı 30% azaltmaq qabiliyyətinə malikdir. Bu məhsul artıq dünyanın 30-dan çox bazarında mövcuddur.</p>
-        </div>
-        
         <div class="ecopact-features">
             <div class="ecopact-feature">
                 <div class="feature-icon">🌍</div>
@@ -871,10 +825,6 @@
                 <p>Əlavəli sement və kimyevi əlavələr texnologiyası</p>
             </div>
         </div>
-
-        <div class="ecopact-additional-text">
-            <p>Aşağı karbonlu ECOPact betonu 100% məhsuldarlıq təmin edir, adi betondan heç də geri qalmayan və hətta daha yaxşı xüsusiyyətlərə malikdir. Mehsul əlavəli sement materiali ve kimyevi əlavələr texnologiyasının innovativ qarışığını ehtiva edir, təkrar emala yararlıdır və dövri iqtisadiyyatı dəstəkləyir.</p>
-        </div>
     </div>
 
     <div class="ecopact-images">
@@ -884,12 +834,20 @@
                 <h3>ECOPact Texnologiyası</h3>
                 <p>İnnovativ aşağı karbonlu beton həlləri</p>
             </div>
+            <div class="image-text">
+                <h2>ECOPact - Aşağı Karbonlu Beton</h2>
+                <p>Hazırda tikinti sektoru dünyada CO2 tullantılarının təxminən 40%-ni təşkil edir və dekarbonizasiyası prosesini sıfır tullantı səviyyəsinə malik gələcək üçün mühüm əhəmiyyət kəsb edir. Holcim artıq dünyada geniş çeşidli aşağı karbonlu beton istehsalına başlamışdır. Bu həllərdən biri, geniş tədqiqat və sınaqlar nəticəsində yaradılan innovativ dizayna malik ECOPact betonudur. Bu aşağı karbonlu beton seriyası binalarda, infrastruktur layihələrdə karbon tullantılarını ən azı 30% azaltmaq qabiliyyətinə malikdir. Bu məhsul artıq dünyanın 30-dan çox bazarında mövcuddur.</p>
+            </div>
         </div>
         <div class="ecopact-image-card">
             <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_view_2.webp" alt="ECOPact Beton 2" class="ecopact-img">
             <div class="image-overlay">
                 <h3>Ekoloji Uyğunluq</h3>
                 <p>Dövri iqtisadiyyatı dəstəkləyən materiallar</p>
+            </div>
+            <div class="image-text">
+                <h2>Məhsuldarlıq və Texnologiya</h2>
+                <p>Aşağı karbonlu ECOPact betonu 100% məhsuldarlıq təmin edir, adi betondan heç də geri qalmayan və hətta daha yaxşı xüsusiyyətlərə malikdir. Mehsul əlavəli sement materiali ve kimyevi əlavələr texnologiyasının innovativ qarışığını ehtiva edir, təkrar emala yararlıdır və dövri iqtisadiyyatı dəstəkləyir.</p>
             </div>
         </div>
     </div>
