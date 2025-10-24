@@ -388,6 +388,12 @@
             .additional-text p {
                 font-size: 14px;
             }
+            .logo-container {
+                padding: 30px 20px;
+            }
+            .logo {
+                max-width: 150px;
+            }
             .card {
                 padding: 12px;
                 border-radius: 14px;
@@ -425,6 +431,44 @@
                 align-self: center;
                 cursor: pointer;
             }
+        }
+
+        .logo-section {
+            max-width: 1000px;
+            margin: 50px auto 0;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
@@ -567,6 +611,11 @@
         </div>
     </div>
 
+    <div class="logo-section">
+        <div class="logo-container">
+            <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_logo.png" alt="EcoPact Logo" class="logo">
+        </div>
+    </div>
 
     <script>
         (function(){
