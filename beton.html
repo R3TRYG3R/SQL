@@ -327,16 +327,22 @@
             }
         }
 
+        .vertical-grid {
+            display: grid;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: stretch;
+            grid-template-columns: 1fr;
+        }
+
         @media (min-width: 1024px) {
             .grid { 
                 grid-template-columns: repeat(3, 1fr); 
             }
-        }
-        
-        @media (min-width: 1024px) {
-            .card:nth-child(4),
-            .card:nth-child(5) {
-                grid-column: span 1.5;
+            
+            .vertical-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -515,7 +521,9 @@
             </ul>
             <a href="https://www.holcim.az/sites/azerbaijan/files/docs/concrete-j402-07.07.23-07.07.24-2.pdf" class="btn" target="_blank">Sertifikat</a>
         </div>
+    </div>
 
+    <div class="vertical-grid">
         <!-- Вертикальная карточка 1 -->
         <div class="card vertical-card">
             <h2>Müasir Beton Texnologiyaları</h2>
