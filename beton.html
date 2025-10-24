@@ -569,7 +569,7 @@
             background-clip: padding-box;
             position: relative;
             margin-top: 20px;
-            min-height: 200px;
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -617,6 +617,7 @@
             gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
+            align-items: stretch;
         }
 
         .ecopact-image-card {
@@ -625,6 +626,8 @@
             overflow: hidden;
             box-shadow: 0 10px 24px rgba(0,0,0,0.12);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .ecopact-image-card:hover {
