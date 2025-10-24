@@ -51,8 +51,29 @@
         }
 
         .intro-text {
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            padding: 40px;
+            border-radius: 20px;
             text-align: center;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
             margin-bottom: 40px;
+        }
+
+        .intro-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
         }
 
         .intro-text h2 {
@@ -63,6 +84,8 @@
             background: var(--grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
         }
 
         .intro-text p {
@@ -70,6 +93,8 @@
             line-height: 1.6;
             color: var(--text-gray);
             margin: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .features-grid {
@@ -118,21 +143,7 @@
             text-align: center;
         }
 
-        .additional-text p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--text-gray);
-            margin: 0;
-            font-style: italic;
-        }
-
-        .conclusion-section {
-            max-width: 1000px;
-            margin: 50px auto 0;
-            padding: 0 20px;
-        }
-
-        .conclusion-content {
+        .additional-text {
             background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
             padding: 40px;
             border-radius: 20px;
@@ -140,9 +151,11 @@
             border: 2px solid transparent;
             background-clip: padding-box;
             position: relative;
+            margin: 30px auto 0;
+            max-width: 800px;
         }
 
-        .conclusion-content::before {
+        .additional-text::before {
             content: '';
             position: absolute;
             top: 0;
@@ -157,17 +170,7 @@
             mask-composite: exclude;
         }
 
-        .conclusion-content h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .conclusion-content p {
+        .additional-text p {
             font-size: 16px;
             line-height: 1.7;
             color: var(--text-gray);
@@ -175,6 +178,7 @@
             position: relative;
             z-index: 1;
         }
+
 
         .grid {
             display: grid;
@@ -356,14 +360,17 @@
             .feature-item p {
                 font-size: 13px;
             }
-            .conclusion-content {
+            .intro-text {
                 padding: 30px 20px;
             }
-            .conclusion-content h2 {
+            .intro-text h2 {
                 font-size: 22px;
             }
-            .conclusion-content p {
+            .intro-text p {
                 font-size: 14px;
+            }
+            .additional-text {
+                padding: 30px 20px;
             }
             .additional-text p {
                 font-size: 14px;
@@ -415,7 +422,7 @@
     <div class="intro-section">
         <div class="intro-text">
             <h2>Betonun Üstünlükləri</h2>
-            <p>Beton, sürətlə inkişaf edən və urbanizasiya olunan dünyanın tələblərinə cavab verən ən etibarlı və çoxfunksiyalı tikinti materialıdır. Universallığı, izolyasiya xüsusiyyətləri və təkrar emala yararlılığı sayəsində o, həm yaşayış binalarında, həm də sənaye və infrastruktur layihələrində geniş tətbiq olunur.</p>
+            <p>Beton, sürətlə inkişaf edən və urbanizasiya olunan dünyanın tələblərinə cavab verən ən etibarlı və çoxfunksiyalı tikinti materialıdır. Universallığı, izolyasiya xüsusiyyətləri və təkrar emala yararlılığı sayəsində o, həm yaşayış binalarında, həm də sənaye və infrastruktur layihələrində geniş tətbiq olunur. Öz fiziki və ekoloji üstünlükləri ilə beton müasir tikinti sənayesində əvəzolunmaz rol oynayır.</p>
         </div>
         
         <div class="features-grid">
@@ -545,12 +552,6 @@
         </div>
     </div>
 
-    <div class="conclusion-section">
-        <div class="conclusion-content">
-            <h2>Betonun Gələcəyi</h2>
-            <p>Müasir texnologiyalar və innovasiyalar sayəsində beton sənayesi davamlı inkişaf yolunda irəliləyir. Təkrar emala yararlı materialların istifadəsi və ekoloji təmiz istehsal prosesləri betonun gələcəkdə də əsas tikinti materialı olaraq qalmasını təmin edir.</p>
-        </div>
-    </div>
 
     <script>
         (function(){
