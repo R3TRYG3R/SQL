@@ -44,14 +44,122 @@
             background: var(--grad);
         }
 
-        .intro-text {
+        .intro-section {
             max-width: 1000px;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .intro-text {
             text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .intro-text h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text p {
             font-size: 16px;
             line-height: 1.6;
             color: var(--text-gray);
+            margin: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: #fff;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .conclusion-section {
+            max-width: 1000px;
+            margin: 50px auto 0;
             padding: 0 20px;
+        }
+
+        .conclusion-content {
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .conclusion-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .conclusion-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .conclusion-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-gray);
+            margin: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .grid {
@@ -212,6 +320,37 @@
         }
 
         @media (max-width: 480px) {
+            .intro-text h2 {
+                font-size: 20px;
+            }
+            .intro-text p {
+                font-size: 14px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .feature-item {
+                padding: 20px;
+            }
+            .feature-icon {
+                font-size: 35px;
+            }
+            .feature-item h3 {
+                font-size: 16px;
+            }
+            .feature-item p {
+                font-size: 13px;
+            }
+            .conclusion-content {
+                padding: 30px 20px;
+            }
+            .conclusion-content h2 {
+                font-size: 22px;
+            }
+            .conclusion-content p {
+                font-size: 14px;
+            }
             .card {
                 padding: 12px;
                 border-radius: 14px;
@@ -256,10 +395,29 @@
 <body>
     <h1 class="section-title">Beton Məhsulları</h1>
     
-    <div class="intro-text">
-        Beton, sürətlə inkişaf edən və urbanizasiya olunan dünyanın tələblərinə cavab verən ən etibarlı və çoxfunksiyalı tikinti materialıdır. Universallığı, izolyasiya xüsusiyyətləri və təkrar emala yararlılığı sayəsində o, həm yaşayış binalarında, həm də sənaye və infrastruktur layihələrində geniş tətbiq olunur. Öz fiziki və ekoloji üstünlükləri ilə beton müasir tikinti sənayesində əvəzolunmaz rol oynayır.
-        <br><br>
-        Bu xüsusiyyətlərinə görə körpülər, tunellər və müasir binaları betonsuz təsəvvür etmək mümkün deyil. Möhkəmliyi, formalaşdırılma çevikliyi və davamlılığı ilə fərqlənən beton, memarlar tərəfindən məqsədyönlü şəkildə istifadə edildikdə və tikinti mütəxəssisləri tərəfindən ustalıqla hazırlandıqda, həm estetik dəyərlər yaradır, həm də yüksək performanslı infrastrukturun formalaşmasına və dairəvi iqtisadiyyatın inkişafına mühüm töhfə verir.
+    <div class="intro-section">
+        <div class="intro-text">
+            <h2>Betonun Üstünlükləri</h2>
+            <p>Beton, sürətlə inkişaf edən və urbanizasiya olunan dünyanın tələblərinə cavab verən ən etibarlı və çoxfunksiyalı tikinti materialıdır. Universallığı, izolyasiya xüsusiyyətləri və təkrar emala yararlılığı sayəsində o, həm yaşayış binalarında, həm də sənaye və infrastruktur layihələrində geniş tətbiq olunur.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🏗️</div>
+                <h3>Möhkəmlik</h3>
+                <p>Yüksək daşıyıcı qabiliyyət və uzunömürlülük</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🌱</div>
+                <h3>Ekoloji Təmizlik</h3>
+                <p>Təkrar emala yararlı və ekoloji uyğun material</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <h3>Çeviklik</h3>
+                <p>İstənilən forma və ölçüdə formalaşdırılma imkanı</p>
+            </div>
+        </div>
     </div>
 
     <div class="grid">
@@ -363,6 +521,13 @@
                 <li>İnnovativ həllər</li>
             </ul>
             <a href="https://www.holcim.az/sites/azerbaijan/files/docs/concrete-j402-07.07.23-07.07.24-2.pdf" class="btn">Sertifikat</a>
+        </div>
+    </div>
+
+    <div class="conclusion-section">
+        <div class="conclusion-content">
+            <h2>Betonun Gələcəyi</h2>
+            <p>Bu xüsusiyyətlərinə görə körpülər, tunellər və müasir binaları betonsuz təsəvvür etmək mümkün deyil. Möhkəmliyi, formalaşdırılma çevikliyi və davamlılığı ilə fərqlənən beton, memarlar tərəfindən məqsədyönlü şəkildə istifadə edildikdə və tikinti mütəxəssisləri tərəfindən ustalıqla hazırlandıqda, həm estetik dəyərlər yaradır, həm də yüksək performanslı infrastrukturun formalaşmasına və dairəvi iqtisadiyyatın inkişafına mühüm töhfə verir.</p>
         </div>
     </div>
 
