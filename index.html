@@ -97,7 +97,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 16px 16px 0 0;
         }
 
         .card_block_upper img {
@@ -106,7 +105,27 @@
             object-fit: cover;
             z-index: 1;
             position: relative;
+        }
+
+        /* Специальные стили для обычного бетона */
+        .card_block_wrapper:first-child .card_block_upper {
             border-radius: 16px 16px 0 0;
+        }
+
+        .card_block_wrapper:first-child .card_block_upper img {
+            border-radius: 16px 16px 0 0;
+        }
+
+        /* Стили для ECOPact (как было) */
+        .card_block_wrapper:last-child .card_block_upper {
+            border-radius: 0;
+        }
+
+        .card_block_wrapper:last-child .card_block_upper img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 0;
         }
 
         .card_block_lower {
