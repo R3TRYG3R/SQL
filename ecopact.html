@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOPact Beton</title>
+    <style>
+        :root {
+            --grad: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
+            --text-dark: #2b2b2b;
+            --text-gray: #555;
+            --bg: #f3f6fa;
+        }
+
+        body {
+            font-family: "Holcim Type", sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .section-title {
+            max-width: 1000px;
+            margin: 0 auto 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: clamp(20px, 2.5vw, 32px);
+            line-height: 1.2;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 4px;
+            margin: 0 auto 0;
+            border-radius: 999px;
+            background: var(--grad);
+        }
+
+        .ecopact-section {
+            max-width: 1000px;
+            margin: 50px auto 0;
+            padding: 0 20px;
+        }
+
+        .ecopact-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ecopact-feature {
+            background: #fff;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .ecopact-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        .ecopact-feature .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .ecopact-feature h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .ecopact-feature p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .image-text {
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            margin-top: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .image-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .image-text h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-text p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-gray);
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-align: justify;
+        }
+
+        /* Стили для основной секции */
+        .main-content-section {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .features-section {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .pdf-section {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pdf-preview {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-preview:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .pdf-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo-section {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .logo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .ecopact-logo {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .pdf-download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 174, 239, 0.3);
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 174, 239, 0.4);
+        }
+
+        .btn-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .pdf-download-btn:hover .btn-arrow {
+            transform: translateX(3px);
+        }
+
+        .ecopact-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 20px;
+            align-items: stretch;
+            padding: 0 20px;
+        }
+
+        .ecopact-image-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ecopact-image-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+        }
+
+        .ecopact-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+
+        .image-overlay h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 8px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .image-overlay p {
+            font-size: 14px;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+
+        @media (max-width: 480px) {
+            .ecopact-features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .ecopact-feature {
+                padding: 20px;
+            }
+            .ecopact-feature .feature-icon {
+                font-size: 35px;
+            }
+            .icon-image {
+                width: 40px;
+                height: 40px;
+            }
+            .ecopact-feature h3 {
+                font-size: 16px;
+            }
+            .ecopact-feature p {
+                font-size: 13px;
+            }
+            .ecopact-images {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .ecopact-img {
+                height: 200px;
+            }
+            .image-overlay {
+                padding: 20px 15px 15px;
+            }
+            .image-overlay h3 {
+                font-size: 16px;
+            }
+            .image-overlay p {
+                font-size: 13px;
+            }
+            .image-text {
+                padding: 20px 15px;
+            }
+            .image-text h2 {
+                font-size: 18px;
+            }
+            .image-text p {
+                font-size: 13px;
+            }
+            .pdf-preview {
+                max-width: 350px;
+            }
+            .pdf-header {
+                padding: 15px;
+            }
+            .pdf-icon {
+                font-size: 20px;
+            }
+            .pdf-title {
+                font-size: 16px;
+            }
+            .pdf-preview-image {
+                height: 250px;
+            }
+            .pdf-image {
+                border-radius: 6px;
+            }
+            .pdf-footer {
+                padding: 15px;
+            }
+            .pdf-download-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .main-content-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .pdf-preview {
+                padding: 15px;
+            }
+            .pdf-download-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .ecopact-logo {
+                max-width: 200px;
+            }
+            .ecopact-features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Логотип ECOPact -->
+    <div class="logo-section">
+        <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_second_icon.png" alt="ECOPact Logo" class="ecopact-logo">
+    </div>
+
+    <!-- PDF и иконки секция -->
+    <div class="main-content-section">
+        <div class="pdf-section">
+            <div class="pdf-preview">
+                <img src="https://www.holcim.az/sites/azerbaijan/files/img/epd_sertificate_first_page.png" 
+                     alt="PDF Sertifikat" 
+                     class="pdf-image">
+                <a href="https://www.holcim.az/sites/azerbaijan/files/docs/epd_declaration.pdf" 
+                   class="pdf-download-btn" 
+                   target="_blank">
+                    <span class="btn-text">PDF-ni açın</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <div class="ecopact-features">
+                <div class="ecopact-feature">
+                    <div class="feature-icon">
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/karbon_icon.webp" alt="-30% CO2" class="icon-image">
+                    </div>
+                    <h3>-30% CO2</h3>
+                    <p>CO2 emissiyalarını ən azı 30% azaltmaq qabiliyyəti</p>
+                </div>
+                <div class="ecopact-feature">
+                    <div class="feature-icon">
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/mehsuldarliq_icon.webp" alt="100% Məhsuldarlıq" class="icon-image">
+                    </div>
+                    <h3>100% Məhsuldarlıq</h3>
+                    <p>Adi betondan heç də geri qalmayan xüsusiyyətlər</p>
+                </div>
+                <div class="ecopact-feature">
+                    <div class="feature-icon">
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/texnologiya_icon.webp" alt="İnnovativ Texnologiya" class="icon-image">
+                    </div>
+                    <h3>İnnovativ Texnologiya</h3>
+                    <p>Əlavəli sement və kimyevi əlavələr texnologiyası</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ecopact-images">
+        <div class="ecopact-image-card">
+            <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_view_1.webp" alt="ECOPact Beton 1" class="ecopact-img">
+            <div class="image-overlay">
+            </div>
+            <div class="image-text">
+                <h2>ECOPact - Aşağı Karbonlu Beton</h2>
+                <p>Hazırda tikinti sektoru dünyada CO2 tullantılarının təxminən 40%-ni təşkil edir və dekarbonizasiyası prosesini sıfır tullantı səviyyəsinə malik gələcək üçün mühüm əhəmiyyət kəsb edir. Holcim artıq dünyada geniş çeşidli aşağı karbonlu beton istehsalına başlamışdır. Bu həllərdən biri, geniş tədqiqat və sınaqlar nəticəsində yaradılan innovativ dizayna malik ECOPact betonudur. Bu aşağı karbonlu beton seriyası binalarda, infrastruktur layihələrdə karbon tullantılarını ən azı 30% azaltmaq qabiliyyətinə malikdir. Bu məhsul artıq dünyanın 30-dan çox bazarında mövcuddur.</p>
+            </div>
+        </div>
+        <div class="ecopact-image-card">
+            <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_view_2.webp" alt="ECOPact Beton 2" class="ecopact-img">
+            <div class="image-overlay">
+            </div>
+            <div class="image-text">
+                <h2>Məhsuldarlıq və Texnologiya</h2>
+                <p>Aşağı karbonlu ECOPact betonu 100% məhsuldarlıq təmin edir, adi betondan heç də geri qalmayan və hətta daha yaxşı xüsusiyyətlərə malikdir. Mehsul əlavəli sement materiali ve kimyevi əlavələr texnologiyasının innovativ qarışığını ehtiva edir, təkrar emala yararlıdır və dövri iqtisadiyyatı dəstəkləyir.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
