@@ -29,7 +29,7 @@
             padding: 40px 5vw;
             grid-template-columns: 1fr;
             justify-content: center;
-            max-width: 1440px;
+            max-width: 600px;
             margin-inline: auto;
         }
 
@@ -37,20 +37,7 @@
         @media (min-width: 600px) {
             .main_wrapper {
                 grid-template-columns: repeat(2, minmax(250px, 1fr));
-            }
-        }
-
-        /* десктоп — 3 колонки */
-        @media (min-width: 900px) {
-            .main_wrapper {
-                grid-template-columns: repeat(3, minmax(250px, 1fr));
-            }
-        }
-
-        /* крупные экраны — 4 колонки */
-        @media (min-width: 1200px) {
-            .main_wrapper {
-                grid-template-columns: repeat(4, minmax(250px, 1fr));
+                max-width: 600px;
             }
         }
 
