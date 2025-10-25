@@ -139,116 +139,56 @@
             text-align: justify;
         }
 
-        /* Стили для логотипа ECOPact */
-        .logo-section {
+        /* Стили для основной секции */
+        .main-content-section {
             max-width: 1000px;
             margin: 30px auto;
             padding: 0 20px;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
             align-items: center;
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
         }
 
-        .logo-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 20px;
-            padding: 2px;
-            background: var(--grad);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
-
-        .ecopact-logo {
-            max-width: 200px;
-            height: auto;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-        }
-
-        /* Стили для PDF превью */
-        .declaration-section {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .pdf-preview-container {
+        .pdf-section {
             display: flex;
             justify-content: center;
         }
 
         .pdf-preview {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-            max-width: 400px;
-            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
         .pdf-preview:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        .pdf-header {
-            background: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
-            color: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .pdf-icon {
-            font-size: 24px;
-        }
-
-        .pdf-title {
-            font-size: 18px;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .pdf-preview-image {
-            height: 300px;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .pdf-image {
             max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            height: auto;
             border-radius: 8px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .pdf-footer {
-            padding: 20px;
-            background: #f8f9fa;
+        .logo-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+        .ecopact-logo {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
 
         .pdf-download-btn {
             display: flex;
@@ -404,46 +344,43 @@
                 padding: 10px 20px;
                 font-size: 14px;
             }
-            .logo-container {
-                padding: 20px;
+            .main-content-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .pdf-preview {
+                padding: 15px;
+            }
+            .pdf-download-btn {
+                padding: 10px 20px;
+                font-size: 14px;
             }
             .ecopact-logo {
-                max-width: 150px;
+                max-width: 200px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Логотип ECOPact -->
-    <div class="logo-section">
-        <div class="logo-container">
-            <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_second_icon.png" alt="ECOPact Logo" class="ecopact-logo">
-        </div>
-    </div>
-
-    <!-- PDF превью с кнопкой -->
-    <div class="declaration-section">
-        <div class="pdf-preview-container">
+    <!-- Логотип и PDF секция -->
+    <div class="main-content-section">
+        <div class="pdf-section">
             <div class="pdf-preview">
-                <div class="pdf-header">
-                    <div class="pdf-icon">📄</div>
-                    <div class="pdf-title">Məhsulun Ekoloji Bəyannaməsi</div>
-                </div>
-                <div class="pdf-preview-image">
-                    <img src="https://www.holcim.az/sites/azerbaijan/files/img/epd_sertificate_first_page.png" 
-                         alt="PDF Sertifikat" 
-                         class="pdf-image">
-                </div>
-                <div class="pdf-footer">
-                    <a href="https://www.holcim.az/sites/azerbaijan/files/docs/epd_declaration.pdf" 
-                       class="pdf-download-btn" 
-                       target="_blank">
-                        <span class="btn-text">PDF-ni açın</span>
-                        <span class="btn-arrow">→</span>
-                    </a>
-                </div>
+                <img src="https://www.holcim.az/sites/azerbaijan/files/img/epd_sertificate_first_page.png" 
+                     alt="PDF Sertifikat" 
+                     class="pdf-image">
+                <a href="https://www.holcim.az/sites/azerbaijan/files/docs/epd_declaration.pdf" 
+                   class="pdf-download-btn" 
+                   target="_blank">
+                    <span class="btn-text">PDF-ni açın</span>
+                    <span class="btn-arrow">→</span>
+                </a>
             </div>
+        </div>
+        
+        <div class="logo-section">
+            <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_second_icon.png" alt="ECOPact Logo" class="ecopact-logo">
         </div>
     </div>
 
