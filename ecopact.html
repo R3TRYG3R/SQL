@@ -142,6 +142,88 @@
             z-index: 1;
         }
 
+        /* Стили для кнопки декларации */
+        .declaration-section {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .declaration-btn {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
+            color: white;
+            text-decoration: none;
+            padding: 25px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 174, 239, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .declaration-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .declaration-btn:hover::before {
+            left: 100%;
+        }
+
+        .declaration-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 174, 239, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 40px;
+            margin-right: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .btn-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .btn-arrow {
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .declaration-btn:hover .btn-arrow {
+            transform: translateX(5px);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
         .ecopact-images {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -243,6 +325,23 @@
             .image-text p {
                 font-size: 13px;
             }
+            .declaration-btn {
+                padding: 20px 25px;
+                margin: 30px auto;
+            }
+            .btn-icon {
+                font-size: 35px;
+                margin-right: 15px;
+            }
+            .btn-title {
+                font-size: 18px;
+            }
+            .btn-subtitle {
+                font-size: 13px;
+            }
+            .btn-arrow {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -291,6 +390,19 @@
         </div>
     </div>
 
+    <!-- Кнопка для PDF декларации -->
+    <div class="declaration-section">
+        <a href="https://www.holcim.az/sites/azerbaijan/files/docs/epd_declaration.pdf" 
+           class="declaration-btn" 
+           target="_blank">
+            <div class="btn-icon">📄</div>
+            <div class="btn-content">
+                <span class="btn-title">Məhsulun Ekoloji Bəyannaməsi</span>
+                <span class="btn-subtitle">PDF sənədini yükləyin</span>
+            </div>
+            <div class="btn-arrow">→</div>
+        </a>
+    </div>
 
 </body>
 </html>
