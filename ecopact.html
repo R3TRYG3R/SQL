@@ -200,92 +200,6 @@
             opacity: 0.9;
         }
 
-        .beyanname-section {
-            max-width: 1000px;
-            margin: 50px auto 50px;
-            padding: 0 20px;
-        }
-
-        .beyanname-btn {
-            background: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 0 auto;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 174, 239, 0.3);
-        }
-
-        .beyanname-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 174, 239, 0.4);
-        }
-
-        .btn-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .beyanname-btn.active .btn-icon {
-            transform: rotate(180deg);
-        }
-
-        .beyanname-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            margin-top: 20px;
-        }
-
-        .beyanname-content.active {
-            max-height: none;
-        }
-
-        .beyanname-text {
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-        }
-
-        .beyanname-text::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 20px;
-            padding: 2px;
-            background: var(--grad);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
-
-        .beyanname-text p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--text-gray);
-            margin: 0 0 20px;
-            position: relative;
-            z-index: 1;
-            text-align: left;
-        }
-
-        .beyanname-text p:last-child {
-            margin-bottom: 0;
-        }
 
         @media (max-width: 480px) {
             .ecopact-features {
@@ -328,16 +242,6 @@
             }
             .image-text p {
                 font-size: 13px;
-            }
-            .beyanname-btn {
-                padding: 12px 25px;
-                font-size: 14px;
-            }
-            .beyanname-text {
-                padding: 30px 20px;
-            }
-            .beyanname-text p {
-                font-size: 14px;
             }
         }
     </style>
@@ -387,32 +291,6 @@
         </div>
     </div>
 
-    <div class="beyanname-section">
-        <button class="beyanname-btn" onclick="toggleBeyanname()">
-            <span class="btn-text">Bəyannamə</span>
-            <span class="btn-icon">▼</span>
-        </button>
-        <div class="beyanname-content" id="beyannameContent">
-            <div class="beyanname-text">
-                <p>Holcim, aşağı karbonlu tikinti həllərinin çeşidini genişləndirərək Azərbaycanın tikinti sənayesində yeni standartlar müəyyənləşdirir. ECOPlanet aşağı karbonlu sementinin 2022-ci ildə və ECOPact "yaşıl" betonunun 2024-cü ildə uğurlu təqdimatından sonra Holcim daha bir mühüm nailiyyət əldə edib — Azərbaycanın tikinti sənayesində ECOPact beton üçün Məhsulun Ekoloji Bəyannaməsini (EPD) alan ilk şirkət olub. Bu uğur Holcim-in regionda şəffaflıq, yüksək performans və dayanıqlılıq sahəsində liderliyə sadiqliyini bir daha təsdiqləyir.</p>
-                
-                <p>Məhsulun Ekoloji Bəyannaməsi (EPD) - məhsulun bütün həyat dövrü ərzində (xammalın çıxarılmasından tutmuş utilizasiyaya qədər) ətraf mühitə təsirini şəffaf şəkildə göstərən, müstəqil şəkildə təsdiqlənmiş beynəlxalq standartlaşdırılmış sənəddir. ISO 14025, EN 15804 və ISO 21930 standartlarına uyğun olaraq hazırlanan EPD-lər memarlara, mühəndislərə və layihəçilərə layihənin hər mərhələsində ekoloji cəhətdən məsul qərarlar qəbul etməyə imkan yaradır. Həyat dövrü qiymətləndirməsinə (LCA) əsaslanaraq, bu sənədlər məhsulun ətraf mühit göstəriciləri barədə dəqiq, obyektiv və təsdiqlənmiş məlumat təqdim edir və Bütün Tikilinin Həyat Dövrü Qiymətləndirilməsi (WBLCA) kimi sistemlər üçün etibarlı baza yaradır.</p>
-                
-                <p>Holcim-in ECOPact beton üçün Məhsulun Ekoloji Bəyannaməsi həyat dövrü qiymətləndirməsi üzrə mütəxəssislərin, müstəqil üçüncü tərəf təsdiqləyicilərin və akkreditə olunmuş EPD proqram operatorlarının iştirakı ilə çoxmərhələli, peşəkar proses nəticəsində hazırlanıb. Bu nailiyyət Holcim-in dayanıqlı tikinti sahəsində liderliyini möhkəmləndirir və Azərbaycanın milli dayanıqlılıq məqsədlərinə birbaşa dəstək verir.</p>
-                
-                <p>Bu strategiyanın əsas hissəsi Qarabağın Net-Sıfır karbon emissiya zonasına çevrilməsidir, burada diqqət yaşıl enerji, ağıllı infrastruktur, dayanıqlı kənd təsərrüfatı və genişmiqyaslı meşə bərpası istiqamətlərinə yönəlib. Holcim, EPD ilə təsdiqlənmiş aşağı karbonlu tikinti materialları təqdim etməklə, sənaye mütəxəssislərinə ölkənin iqlim məqsədlərinə töhfə verməyə və xüsusilə Qarabağın bərpası və dayanıqlı inkişafı çərçivəsində yaşıl və davamlı gələcəyin qurulmasında fəal iştirak etməyə imkan yaradır.</p>
-            </div>
-        </div>
-    </div>
 
-    <script>
-        function toggleBeyanname() {
-            const content = document.getElementById('beyannameContent');
-            const btn = document.querySelector('.beyanname-btn');
-            
-            content.classList.toggle('active');
-            btn.classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
