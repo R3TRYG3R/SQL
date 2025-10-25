@@ -181,12 +181,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .logo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
         }
 
         .ecopact-logo {
             max-width: 300px;
             height: auto;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            position: relative;
+            z-index: 1;
         }
 
 
