@@ -48,9 +48,9 @@
 
         .ecopact-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
-            margin-bottom: 30px;
+            width: 100%;
         }
 
         .ecopact-feature {
@@ -147,7 +147,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
+            align-items: start;
+        }
+
+        .features-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .pdf-section {
@@ -178,6 +184,9 @@
         }
 
         .logo-section {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -381,12 +390,21 @@
             .ecopact-logo {
                 max-width: 200px;
             }
+            .ecopact-features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Логотип и PDF секция -->
+    <!-- Логотип ECOPact -->
+    <div class="logo-section">
+        <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_second_icon.png" alt="ECOPact Logo" class="ecopact-logo">
+    </div>
+
+    <!-- PDF и иконки секция -->
     <div class="main-content-section">
         <div class="pdf-section">
             <div class="pdf-preview">
@@ -402,30 +420,27 @@
             </div>
         </div>
         
-        <div class="logo-section">
-            <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_second_icon.png" alt="ECOPact Logo" class="ecopact-logo">
+        <div class="features-section">
+            <div class="ecopact-features">
+                <div class="ecopact-feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>30% Az Karbon</h3>
+                    <p>Karbon tullantılarını ən azı 30% azaltmaq qabiliyyəti</p>
+                </div>
+                <div class="ecopact-feature">
+                    <div class="feature-icon">♻️</div>
+                    <h3>100% Məhsuldarlıq</h3>
+                    <p>Adi betondan heç də geri qalmayan xüsusiyyətlər</p>
+                </div>
+                <div class="ecopact-feature">
+                    <div class="feature-icon">🔬</div>
+                    <h3>İnnovativ Texnologiya</h3>
+                    <p>Əlavəli sement və kimyevi əlavələr texnologiyası</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="ecopact-section">
-        <div class="ecopact-features">
-            <div class="ecopact-feature">
-                <div class="feature-icon">🌍</div>
-                <h3>30% Az Karbon</h3>
-                <p>Karbon tullantılarını ən azı 30% azaltmaq qabiliyyəti</p>
-            </div>
-            <div class="ecopact-feature">
-                <div class="feature-icon">♻️</div>
-                <h3>100% Məhsuldarlıq</h3>
-                <p>Adi betondan heç də geri qalmayan xüsusiyyətlər</p>
-            </div>
-            <div class="ecopact-feature">
-                <div class="feature-icon">🔬</div>
-                <h3>İnnovativ Texnologiya</h3>
-                <p>Əlavəli sement və kimyevi əlavələr texnologiyası</p>
-            </div>
-        </div>
-    </div>
 
     <div class="ecopact-images">
         <div class="ecopact-image-card">
