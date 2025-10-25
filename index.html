@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beton Məhsulları</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    />
+    <style>
+        :root {
+            --grad: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
+            --text-dark: #2b2b2b;
+            --text-gray: #555;
+            --bg: #f3f6fa;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .main_wrapper {
+            display: grid;
+            gap: 24px;
+            padding: 40px 5vw;
+            grid-template-columns: 1fr;
+            justify-content: center;
+            max-width: 1440px;
+            margin-inline: auto;
+        }
+
+        /* планшет — 2 колонки */
+        @media (min-width: 600px) {
+            .main_wrapper {
+                grid-template-columns: repeat(2, minmax(250px, 1fr));
+            }
+        }
+
+        /* десктоп — 3 колонки */
+        @media (min-width: 900px) {
+            .main_wrapper {
+                grid-template-columns: repeat(3, minmax(250px, 1fr));
+            }
+        }
+
+        /* крупные экраны — 4 колонки */
+        @media (min-width: 1200px) {
+            .main_wrapper {
+                grid-template-columns: repeat(4, minmax(250px, 1fr));
+            }
+        }
+
+        a.card_block_wrapper {
+            display: block;
+            text-decoration: none;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        a.card_block_wrapper::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        a.card_block_wrapper:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+        }
+
+        a.card_block_wrapper:hover::before {
+            opacity: 1;
+        }
+
+        .card_block {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card_block_upper {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card_block_upper img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card_block_lower {
+            padding: 24px 16px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            flex: 1;
+        }
+
+        .card_block_lower h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 480px) {
+            .card_block_upper {
+                height: 140px;
+            }
+            .card_block_lower h1 {
+                font-size: 0.95rem;
+            }
+            .main_wrapper {
+                padding: 20px 4vw;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_wrapper">
+        <a href="beton.html" class="card_block_wrapper">
+            <div class="card_block">
+                <div class="card_block_upper">
+                    <img
+                        src="https://www.holcim.az/sites/azerbaijan/files/img/beton_view_1.webp"
+                        alt="Beton məhsulları"
+                    />
+                </div>
+                <div class="card_block_lower">
+                    <h1>Beton Məhsulları</h1>
+                </div>
+            </div>
+        </a>
+
+        <a href="ecopact.html" class="card_block_wrapper">
+            <div class="card_block">
+                <div class="card_block_upper">
+                    <img
+                        src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_logo.png"
+                        alt="ECOPact beton"
+                    />
+                </div>
+                <div class="card_block_lower">
+                    <h1>ECOPact Beton</h1>
+                </div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
