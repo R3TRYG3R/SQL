@@ -229,7 +229,7 @@
 
         .pdf-preview-image {
             height: 300px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -237,26 +237,12 @@
             overflow: hidden;
         }
 
-        .pdf-placeholder {
-            text-align: center;
-            color: var(--text-gray);
-        }
-
-        .pdf-icon-large {
-            font-size: 60px;
-            margin-bottom: 15px;
-            opacity: 0.7;
-        }
-
-        .pdf-text {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .pdf-subtitle {
-            font-size: 14px;
-            opacity: 0.8;
+        .pdf-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .pdf-footer {
@@ -408,14 +394,8 @@
             .pdf-preview-image {
                 height: 250px;
             }
-            .pdf-icon-large {
-                font-size: 50px;
-            }
-            .pdf-text {
-                font-size: 14px;
-            }
-            .pdf-subtitle {
-                font-size: 12px;
+            .pdf-image {
+                border-radius: 6px;
             }
             .pdf-footer {
                 padding: 15px;
@@ -451,11 +431,9 @@
                     <div class="pdf-title">Məhsulun Ekoloji Bəyannaməsi</div>
                 </div>
                 <div class="pdf-preview-image">
-                    <div class="pdf-placeholder">
-                        <div class="pdf-icon-large">📄</div>
-                        <div class="pdf-text">PDF Sənədi</div>
-                        <div class="pdf-subtitle">Məhsulun Ekoloji Bəyannaməsi</div>
-                    </div>
+                    <img src="https://www.holcim.az/sites/azerbaijan/files/img/epd_sertificate_first_page.png" 
+                         alt="PDF Sertifikat" 
+                         class="pdf-image">
                 </div>
                 <div class="pdf-footer">
                     <a href="https://www.holcim.az/sites/azerbaijan/files/docs/epd_declaration.pdf" 
