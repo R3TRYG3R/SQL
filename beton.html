@@ -118,6 +118,15 @@
         .feature-icon {
             font-size: 40px;
             margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
         }
 
         .feature-item h3 {
@@ -358,6 +367,10 @@
             .feature-icon {
                 font-size: 35px;
             }
+            .icon-image {
+                width: 40px;
+                height: 40px;
+            }
             .feature-item h3 {
                 font-size: 16px;
             }
@@ -431,17 +444,23 @@
         
         <div class="features-grid">
             <div class="feature-item">
-                <div class="feature-icon">🏗️</div>
+                <div class="feature-icon">
+                    <img src="https://www.holcim.az/sites/azerbaijan/files/img/mohkemlik_icon.png" alt="Möhkəmlik" class="icon-image">
+                </div>
                 <h3>Möhkəmlik</h3>
                 <p>Yüksək daşıyıcı qabiliyyət və uzunömürlülük</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">🌱</div>
+                <div class="feature-icon">
+                    <img src="https://www.holcim.az/sites/azerbaijan/files/img/ekoloji_temizlik_icon.webp" alt="Ekoloji Təmizlik" class="icon-image">
+                </div>
                 <h3>Ekoloji Təmizlik</h3>
                 <p>Təkrar emala yararlı və ekoloji uyğun material</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">🎨</div>
+                <div class="feature-icon">
+                    <img src="https://www.holcim.az/sites/azerbaijan/files/img/ceviklik_icon.webp" alt="Çeviklik" class="icon-image">
+                </div>
                 <h3>Çeviklik</h3>
                 <p>İstənilən forma və ölçüdə formalaşdırılma imkanı</p>
             </div>
