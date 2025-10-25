@@ -139,6 +139,48 @@
             text-align: justify;
         }
 
+        /* Стили для логотипа ECOPact */
+        .logo-section {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .ecopact-logo {
+            max-width: 200px;
+            height: auto;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
         /* Стили для кнопки декларации */
         .declaration-section {
             max-width: 1000px;
@@ -339,12 +381,25 @@
             .btn-arrow {
                 font-size: 20px;
             }
+            .logo-container {
+                padding: 20px;
+            }
+            .ecopact-logo {
+                max-width: 150px;
+            }
         }
     </style>
 </head>
 
 <body>
     <h1 class="section-title">ECOPact Beton</h1>
+
+    <!-- Логотип ECOPact -->
+    <div class="logo-section">
+        <div class="logo-container">
+            <img src="https://www.holcim.az/sites/azerbaijan/files/img/ecopact_second_icon.png" alt="ECOPact Logo" class="ecopact-logo">
+        </div>
+    </div>
 
     <!-- Кнопка для PDF декларации -->
     <div class="declaration-section">
