@@ -94,17 +94,27 @@
             text-align: justify;
         }
 
-        .videos-section {
+        .content-section {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .videos-grid {
+        .content-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             margin-top: 30px;
+        }
+
+        .text-block {
+            display: flex;
+            align-items: center;
+        }
+
+        .video-block {
+            display: flex;
+            align-items: center;
         }
 
         .video-container {
@@ -115,6 +125,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
+            width: 100%;
         }
 
         .video-container:hover {
@@ -162,15 +173,14 @@
         }
 
         @media (max-width: 1024px) {
-            .videos-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
         }
 
         @media (max-width: 600px) {
-            .videos-grid {
-                grid-template-columns: 1fr;
+            .content-grid {
                 gap: 15px;
             }
             
@@ -210,61 +220,74 @@
 <body>
     <h1 class="section-title">NEXTGEN GROWTH 2030 STRATEGİYASI</h1>
     
-    <div class="intro-section">
-        <div class="intro-text">
-            <h2>Strategiya Haqqında</h2>
-            <p>Holcim-in "NextGen Growth 2030" strategiyasının məqsədi - dayanıqlı tikinti sahəsində aparıcı tərəfdaş olmaq və insanlar, müştərilər və səhmdarlar üçün daha böyük dəyər yaratmaqla əhəmiyyətli artım imkanlarını açmaqdır.</p>
-        </div>
-    </div>
-
-    <div class="intro-section">
-        <div class="intro-text">
-            <h2>Liderlik və Artım</h2>
-            <p>"NextGen Growth 2030" çərçivəsində Holcim Azərbaycan dayanıqlılıq sahəsindəki liderliyindən istifadə edərək mənfəətli artımı təmin edəcək, eyni zamanda güclü iqtisadi əsaslardan və sənayeləşmə meyillərindən faydalanmaqla artımı sürətləndirəcək.</p>
-        </div>
-    </div>
-
-    <div class="intro-section">
-        <div class="intro-text">
-            <h2>Dəyər Yaradılması</h2>
-            <p>Biz yüksək dəyərli tikinti həlləri - bina sistemlərindən tutmuş yüksək performanslı betona qədər - sahəsində genişlənməklə fəaliyyət göstərdiyimiz bazarları artıracağıq. "NextGen Growth 2030" kapitalın artıma yönəldilmiş bölgüsü və əlavə dəyər yaradan birləşmə və satınalmalar vasitəsilə səhmdar dəyərinin artımını təmin edəcək.</p>
-        </div>
-    </div>
-
-    <div class="videos-section">
-        <h2 class="section-title">Strategiya Videoları</h2>
-        
-        <div class="videos-grid">
-            <div class="video-container">
-                <video controls>
-                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_4.mp4" type="video/mp4">
-                    Sizin brauzer video formatını dəstəkləmir.
-                </video>
-                <div class="video-title">NextGen Video 1</div>
+    <div class="content-section">
+        <div class="content-grid">
+            <!-- Блок 1: Текст -->
+            <div class="text-block">
+                <div class="intro-text">
+                    <h2>Strategiya Haqqında</h2>
+                    <p>Holcim-in "NextGen Growth 2030" strategiyasının məqsədi - dayanıqlı tikinti sahəsində aparıcı tərəfdaş olmaq və insanlar, müştərilər və səhmdarlar üçün daha böyük dəyər yaratmaqla əhəmiyyətli artım imkanlarını açmaqdır.</p>
+                </div>
             </div>
 
-            <div class="video-container">
-                <video controls>
-                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_5.mp4" type="video/mp4">
-                    Sizin brauzer video formatını dəstəkləmir.
-                </video>
-                <div class="video-title">NextGen Video 2</div>
+            <!-- Блок 2: Видео -->
+            <div class="video-block">
+                <div class="video-container">
+                    <video controls>
+                        <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_4.mp4" type="video/mp4">
+                        Sizin brauzer video formatını dəstəkləmir.
+                    </video>
+                    <div class="video-title">Strategiya Təqdimatı</div>
+                </div>
             </div>
 
-            <div class="video-container">
-                <video controls>
-                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_6.mp4" type="video/mp4">
-                    Sizin brauzer video formatını dəstəkləmir.
-                </video>
-                <div class="video-title">NextGen Video 3</div>
+            <!-- Блок 3: Видео -->
+            <div class="video-block">
+                <div class="video-container">
+                    <video controls>
+                        <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_5.mp4" type="video/mp4">
+                        Sizin brauzer video formatını dəstəkləmir.
+                    </video>
+                    <div class="video-title">Liderlik Yanaşması</div>
+                </div>
             </div>
 
-            <div class="video-container">
-                <video controls>
-                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_7.mp4" type="video/mp4">
-                    Sizin brauzer video formatını dəstəkləmir.
-                </video>
-                <div class="video-title">NextGen Video 4</div>
+            <!-- Блок 4: Текст -->
+            <div class="text-block">
+                <div class="intro-text">
+                    <h2>Liderlik və Artım</h2>
+                    <p>"NextGen Growth 2030" çərçivəsində Holcim Azərbaycan dayanıqlılıq sahəsindəki liderliyindən istifadə edərək mənfəətli artımı təmin edəcək, eyni zamanda güclü iqtisadi əsaslardan və sənayeləşmə meyillərindən faydalanmaqla artımı sürətləndirəcək.</p>
+                </div>
+            </div>
+
+            <!-- Блок 5: Текст -->
+            <div class="text-block">
+                <div class="intro-text">
+                    <h2>Dəyər Yaradılması</h2>
+                    <p>Biz yüksək dəyərli tikinti həlləri - bina sistemlərindən tutmuş yüksək performanslı betona qədər - sahəsində genişlənməklə fəaliyyət göstərdiyimiz bazarları artıracağıq. "NextGen Growth 2030" kapitalın artıma yönəldilmiş bölgüsü və əlavə dəyər yaradan birləşmə və satınalmalar vasitəsilə səhmdar dəyərinin artımını təmin edəcək.</p>
+                </div>
+            </div>
+
+            <!-- Блок 6: Видео -->
+            <div class="video-block">
+                <div class="video-container">
+                    <video controls>
+                        <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_6.mp4" type="video/mp4">
+                        Sizin brauzer video formatını dəstəkləmir.
+                    </video>
+                    <div class="video-title">Dəyər Yaradılması</div>
+                </div>
+            </div>
+
+            <!-- Блок 7: Видео -->
+            <div class="video-block">
+                <div class="video-container">
+                    <video controls>
+                        <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_7.mp4" type="video/mp4">
+                        Sizin brauzer video formatını dəstəkləmir.
+                    </video>
+                    <div class="video-title">Gələcək Perspektivlər</div>
+                </div>
             </div>
         </div>
     </div>
