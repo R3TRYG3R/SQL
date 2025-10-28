@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Growth 2030 Strategiyası</title>
+    <style>
+        :root {
+            --grad: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
+            --text-dark: #2b2b2b;
+            --text-gray: #555;
+            --bg: #f3f6fa;
+        }
+
+        body {
+            font-family: "Holcim Type", sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .section-title {
+            max-width: 1000px;
+            margin: 0 auto 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: clamp(20px, 2.5vw, 32px);
+            line-height: 1.2;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 4px;
+            margin: 0 auto 0;
+            border-radius: 999px;
+            background: var(--grad);
+        }
+
+        .intro-section {
+            max-width: 1000px;
+            margin: 20px auto 50px;
+            padding: 0 20px;
+        }
+
+        .intro-text {
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .intro-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .intro-text h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-gray);
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-align: justify;
+        }
+
+        .videos-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        .video-container::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container:hover::after {
+            opacity: 1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .video-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 12px;
+            text-align: center;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 1024px) {
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .video-container video {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro-text {
+                padding: 30px 20px;
+            }
+            .intro-text h2 {
+                font-size: 22px;
+            }
+            .intro-text p {
+                font-size: 14px;
+            }
+            .video-container {
+                padding: 12px;
+                border-radius: 14px;
+            }
+            .video-container::after {
+                border-radius: 14px;
+            }
+            .video-container video {
+                height: 200px;
+                border-radius: 6px;
+            }
+            .video-title {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="section-title">NEXTGEN GROWTH 2030 STRATEGİYASI</h1>
+    
+    <div class="intro-section">
+        <div class="intro-text">
+            <h2>Strategiya Haqqında</h2>
+            <p>Holcim-in "NextGen Growth 2030" strategiyasının məqsədi - dayanıqlı tikinti sahəsində aparıcı tərəfdaş olmaq və insanlar, müştərilər və səhmdarlar üçün daha böyük dəyər yaratmaqla əhəmiyyətli artım imkanlarını açmaqdır.</p>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <div class="intro-text">
+            <h2>Liderlik və Artım</h2>
+            <p>"NextGen Growth 2030" çərçivəsində Holcim Azərbaycan dayanıqlılıq sahəsindəki liderliyindən istifadə edərək mənfəətli artımı təmin edəcək, eyni zamanda güclü iqtisadi əsaslardan və sənayeləşmə meyillərindən faydalanmaqla artımı sürətləndirəcək.</p>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <div class="intro-text">
+            <h2>Dəyər Yaradılması</h2>
+            <p>Biz yüksək dəyərli tikinti həlləri - bina sistemlərindən tutmuş yüksək performanslı betona qədər - sahəsində genişlənməklə fəaliyyət göstərdiyimiz bazarları artıracağıq. "NextGen Growth 2030" kapitalın artıma yönəldilmiş bölgüsü və əlavə dəyər yaradan birləşmə və satınalmalar vasitəsilə səhmdar dəyərinin artımını təmin edəcək.</p>
+        </div>
+    </div>
+
+    <div class="videos-section">
+        <h2 class="section-title">Strategiya Videoları</h2>
+        
+        <div class="videos-grid">
+            <div class="video-container">
+                <video controls>
+                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_4.mp4" type="video/mp4">
+                    Sizin brauzer video formatını dəstəkləmir.
+                </video>
+                <div class="video-title">NextGen Video 1</div>
+            </div>
+
+            <div class="video-container">
+                <video controls>
+                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_5.mp4" type="video/mp4">
+                    Sizin brauzer video formatını dəstəkləmir.
+                </video>
+                <div class="video-title">NextGen Video 2</div>
+            </div>
+
+            <div class="video-container">
+                <video controls>
+                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_6.mp4" type="video/mp4">
+                    Sizin brauzer video formatını dəstəkləmir.
+                </video>
+                <div class="video-title">NextGen Video 3</div>
+            </div>
+
+            <div class="video-container">
+                <video controls>
+                    <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_7.mp4" type="video/mp4">
+                    Sizin brauzer video formatını dəstəkləmir.
+                </video>
+                <div class="video-title">NextGen Video 4</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
