@@ -201,6 +201,37 @@
             margin-top: 50px;
         }
 
+        /* Специальная компоновка для компьютеров */
+        @media (min-width: 1025px) {
+            .content-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            /* Блок 1: Текст слева, Видео справа */
+            .text-block:nth-child(1) {
+                order: 1;
+            }
+            .video-block:nth-child(2) {
+                order: 2;
+            }
+            
+            /* Блок 2: Видео слева, Текст справа */
+            .video-block:nth-child(3) {
+                order: 3;
+            }
+            .text-block:nth-child(4) {
+                order: 4;
+            }
+            
+            /* Блок 3: Текст слева, Видео справа */
+            .text-block:nth-child(5) {
+                order: 5;
+            }
+            .video-block:nth-child(6) {
+                order: 6;
+            }
+        }
+
         .text-block {
             display: flex;
             align-items: center;
@@ -406,21 +437,21 @@
                 </div>
             </div>
 
-            <!-- Блок 3: Текст -->
-            <div class="text-block" data-aos="fade-right">
-                <div class="intro-text">
-                    <h2>Liderlik və Artım</h2>
-                    <p>"NextGen Growth 2030" çərçivəsində Holcim Azərbaycan dayanıqlılıq sahəsindəki liderliyindən istifadə edərək mənfəətli artımı təmin edəcək, eyni zamanda güclü iqtisadi əsaslardan və sənayeləşmə meyillərindən faydalanmaqla artımı sürətləndirəcək.</p>
-                </div>
-            </div>
-
-            <!-- Блок 4: Видео -->
-            <div class="video-block" data-aos="fade-left">
+            <!-- Блок 3: Видео -->
+            <div class="video-block" data-aos="fade-right">
                 <div class="video-container">
                     <video controls>
                         <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_5.mp4" type="video/mp4">
                         Sizin brauzer video formatını dəstəkləmir.
                     </video>
+                </div>
+            </div>
+
+            <!-- Блок 4: Текст -->
+            <div class="text-block" data-aos="fade-left">
+                <div class="intro-text">
+                    <h2>Liderlik və Artım</h2>
+                    <p>"NextGen Growth 2030" çərçivəsində Holcim Azərbaycan dayanıqlılıq sahəsindəki liderliyindən istifadə edərək mənfəətli artımı təmin edəcək, eyni zamanda güclü iqtisadi əsaslardan və sənayeləşmə meyillərindən faydalanmaqla artımı sürətləndirəcək.</p>
                 </div>
             </div>
 
