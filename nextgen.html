@@ -95,7 +95,7 @@
         }
 
         .content-section {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -103,42 +103,76 @@
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 40px;
+            margin-top: 50px;
         }
 
         .text-block {
             display: flex;
             align-items: center;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .text-block.animate {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .video-block {
             display: flex;
             align-items: center;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .video-block.animate {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .video-container {
             position: relative;
             background: #fff;
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             overflow: hidden;
             width: 100%;
+            transform: scale(0.95);
         }
 
         .video-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .video-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--grad);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+
+        .video-container:hover::before {
+            opacity: 0.1;
         }
 
         .video-container::after {
             content: "";
             position: absolute;
             inset: 0;
-            border-radius: 16px;
-            padding: 2px;
+            border-radius: 20px;
+            padding: 3px;
             background: var(--grad);
             -webkit-mask:
                 linear-gradient(#fff 0 0) content-box,
@@ -146,7 +180,7 @@
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .video-container:hover::after {
@@ -155,21 +189,48 @@
 
         .video-container video {
             width: 100%;
-            height: 300px;
+            height: 350px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 12px;
             display: block;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
         }
 
-        .video-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-top: 12px;
-            text-align: center;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .video-container:hover video {
+            transform: scale(1.05);
+        }
+
+        .intro-text {
+            transition: all 0.6s ease;
+            transform: translateY(20px);
+        }
+
+        .text-block.animate .intro-text {
+            transform: translateY(0);
+        }
+
+        .intro-text h2 {
+            transition: all 0.6s ease 0.2s;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .text-block.animate .intro-text h2 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .intro-text p {
+            transition: all 0.6s ease 0.4s;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .text-block.animate .intro-text p {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         @media (max-width: 1024px) {
@@ -223,7 +284,7 @@
     <div class="content-section">
         <div class="content-grid">
             <!-- Блок 1: Текст -->
-            <div class="text-block">
+            <div class="text-block" data-aos="fade-right">
                 <div class="intro-text">
                     <h2>Strategiya Haqqında</h2>
                     <p>Holcim-in "NextGen Growth 2030" strategiyasının məqsədi - dayanıqlı tikinti sahəsində aparıcı tərəfdaş olmaq və insanlar, müştərilər və səhmdarlar üçün daha böyük dəyər yaratmaqla əhəmiyyətli artım imkanlarını açmaqdır.</p>
@@ -231,29 +292,27 @@
             </div>
 
             <!-- Блок 2: Видео -->
-            <div class="video-block">
+            <div class="video-block" data-aos="fade-left">
                 <div class="video-container">
                     <video controls>
                         <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_4.mp4" type="video/mp4">
                         Sizin brauzer video formatını dəstəkləmir.
                     </video>
-                    <div class="video-title">Strategiya Təqdimatı</div>
                 </div>
             </div>
 
             <!-- Блок 3: Видео -->
-            <div class="video-block">
+            <div class="video-block" data-aos="fade-right">
                 <div class="video-container">
                     <video controls>
                         <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_5.mp4" type="video/mp4">
                         Sizin brauzer video formatını dəstəkləmir.
                     </video>
-                    <div class="video-title">Liderlik Yanaşması</div>
                 </div>
             </div>
 
             <!-- Блок 4: Текст -->
-            <div class="text-block">
+            <div class="text-block" data-aos="fade-left">
                 <div class="intro-text">
                     <h2>Liderlik və Artım</h2>
                     <p>"NextGen Growth 2030" çərçivəsində Holcim Azərbaycan dayanıqlılıq sahəsindəki liderliyindən istifadə edərək mənfəətli artımı təmin edəcək, eyni zamanda güclü iqtisadi əsaslardan və sənayeləşmə meyillərindən faydalanmaqla artımı sürətləndirəcək.</p>
@@ -261,7 +320,7 @@
             </div>
 
             <!-- Блок 5: Текст -->
-            <div class="text-block">
+            <div class="text-block" data-aos="fade-right">
                 <div class="intro-text">
                     <h2>Dəyər Yaradılması</h2>
                     <p>Biz yüksək dəyərli tikinti həlləri - bina sistemlərindən tutmuş yüksək performanslı betona qədər - sahəsində genişlənməklə fəaliyyət göstərdiyimiz bazarları artıracağıq. "NextGen Growth 2030" kapitalın artıma yönəldilmiş bölgüsü və əlavə dəyər yaradan birləşmə və satınalmalar vasitəsilə səhmdar dəyərinin artımını təmin edəcək.</p>
@@ -269,27 +328,115 @@
             </div>
 
             <!-- Блок 6: Видео -->
-            <div class="video-block">
+            <div class="video-block" data-aos="fade-left">
                 <div class="video-container">
                     <video controls>
                         <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_6.mp4" type="video/mp4">
                         Sizin brauzer video formatını dəstəkləmir.
                     </video>
-                    <div class="video-title">Dəyər Yaradılması</div>
-                </div>
-            </div>
-
-            <!-- Блок 7: Видео -->
-            <div class="video-block">
-                <div class="video-container">
-                    <video controls>
-                        <source src="https://www.holcim.az/sites/azerbaijan/files/videos/nextgen_video_7.mp4" type="video/mp4">
-                        Sizin brauzer video formatını dəstəkləmir.
-                    </video>
-                    <div class="video-title">Gələcək Perspektivlər</div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Анимация появления элементов при скролле
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.text-block, .video-block');
+            
+            elements.forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    setTimeout(() => {
+                        element.classList.add('animate');
+                    }, index * 200);
+                }
+            });
+        }
+
+        // Плавная анимация заголовка
+        function animateTitle() {
+            const title = document.querySelector('.section-title');
+            title.style.opacity = '0';
+            title.style.transform = 'translateY(-30px)';
+            
+            setTimeout(() => {
+                title.style.transition = 'all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                title.style.opacity = '1';
+                title.style.transform = 'translateY(0)';
+            }, 300);
+        }
+
+        // Анимация видео при наведении
+        function addVideoEffects() {
+            const videos = document.querySelectorAll('video');
+            
+            videos.forEach(video => {
+                video.addEventListener('mouseenter', () => {
+                    video.style.transform = 'scale(1.05)';
+                });
+                
+                video.addEventListener('mouseleave', () => {
+                    video.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Параллакс эффект для текстовых блоков
+        function addParallaxEffect() {
+            const textBlocks = document.querySelectorAll('.text-block');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                
+                textBlocks.forEach((block, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    const yPos = -(scrolled * speed);
+                    block.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+        }
+
+        // Инициализация анимаций
+        document.addEventListener('DOMContentLoaded', () => {
+            animateTitle();
+            animateOnScroll();
+            addVideoEffects();
+            
+            // Анимация при скролле
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Дополнительные эффекты для видео
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoContainers = document.querySelectorAll('.video-container');
+            
+            videoContainers.forEach(container => {
+                container.addEventListener('mouseenter', () => {
+                    container.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    container.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
