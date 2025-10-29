@@ -152,6 +152,33 @@
             border-radius: 2px;
         }
 
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 200px;
+            height: 100%;
+            background: var(--grad);
+            border-radius: 2px;
+            transform: translateX(-50%);
+            clip-path: path('M0,0 Q100,50 200,100 T400,200 Q500,250 400,300 T200,400 Q100,450 200,500 T400,600 Q500,650 400,700 T200,800 Q100,850 200,900 T400,1000');
+            opacity: 0.7;
+        }
+
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--grad);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
         .timeline-item {
             position: relative;
             margin-bottom: 80px;
@@ -200,6 +227,73 @@
             position: relative;
             border: 2px solid transparent;
             background-clip: padding-box;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .timeline-text {
+            flex: 1;
+        }
+
+        .timeline-image {
+            width: 200px;
+            height: 150px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            font-size: 14px;
+            text-align: center;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .timeline-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 15px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .timeline-image:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 13px;
+        }
+
+        .timeline-image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 10px;
+        }
+
+        .timeline-image-placeholder::before {
+            content: '📷';
+            font-size: 32px;
+            opacity: 0.5;
         }
 
         .timeline-content::before {
@@ -274,6 +368,8 @@
                 padding-left: 20px;
                 padding-right: 20px;
                 text-align: left;
+                flex-direction: column;
+                gap: 15px;
             }
 
             .timeline-year {
@@ -290,6 +386,17 @@
 
             .timeline-content {
                 padding: 20px;
+            }
+
+            .timeline-text {
+                order: 1;
+            }
+
+            .timeline-image {
+                order: 2;
+                width: 100%;
+                height: 120px;
+                align-self: center;
             }
 
             .timeline-title {
@@ -310,12 +417,19 @@
             .timeline-item:nth-child(even) .timeline-content {
                 margin-left: 50px;
                 padding: 15px;
+                flex-direction: column;
+                gap: 12px;
             }
 
             .timeline-year {
                 left: 30px;
                 padding: 8px 16px;
                 font-size: 16px;
+            }
+
+            .timeline-image {
+                width: 100%;
+                height: 100px;
             }
 
             .timeline-title {
@@ -350,8 +464,15 @@
             <div class="timeline-year">2005</div>
             <div class="timeline-content">
                 <div class="timeline-arrow"></div>
-                <h3 class="timeline-title">İlk Addımlar</h3>
-                <p class="timeline-description">Holcim Azərbaycanda ilk beton zavodunu açdı və ölkədə dayanıqlı tikinti materialları istehsalına başladı. Bu, şirkətin regionda genişlənməsi üçün ilk mühüm addım oldu.</p>
+                <div class="timeline-text">
+                    <h3 class="timeline-title">İlk Addımlar</h3>
+                    <p class="timeline-description">Holcim Azərbaycanda ilk beton zavodunu açdı və ölkədə dayanıqlı tikinti materialları istehsalına başladı. Bu, şirkətin regionda genişlənməsi üçün ilk mühüm addım oldu.</p>
+                </div>
+                <div class="timeline-image">
+                    <div class="timeline-image-placeholder">
+                        <span>Foto əlavə et</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -359,8 +480,15 @@
             <div class="timeline-year">2010</div>
             <div class="timeline-content">
                 <div class="timeline-arrow"></div>
-                <h3 class="timeline-title">Texnoloji İnnovasiyalar</h3>
-                <p class="timeline-description">Müasir texnologiyaların tətbiqi və yeni məhsul xətlərinin təqdim edilməsi. Yüksək keyfiyyətli beton məhsullarının istehsalına başlanıldı.</p>
+                <div class="timeline-text">
+                    <h3 class="timeline-title">Texnoloji İnnovasiyalar</h3>
+                    <p class="timeline-description">Müasir texnologiyaların tətbiqi və yeni məhsul xətlərinin təqdim edilməsi. Yüksək keyfiyyətli beton məhsullarının istehsalına başlanıldı.</p>
+                </div>
+                <div class="timeline-image">
+                    <div class="timeline-image-placeholder">
+                        <span>Foto əlavə et</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -368,8 +496,15 @@
             <div class="timeline-year">2015</div>
             <div class="timeline-content">
                 <div class="timeline-arrow"></div>
-                <h3 class="timeline-title">Ekoloji Təşəbbüslər</h3>
-                <p class="timeline-description">Dayanıqlı inkişaf strategiyasının tətbiqi və ekoloji təmiz texnologiyaların istifadəsi. Karbon tullantılarının azaldılması üzrə ilk addımlar atıldı.</p>
+                <div class="timeline-text">
+                    <h3 class="timeline-title">Ekoloji Təşəbbüslər</h3>
+                    <p class="timeline-description">Dayanıqlı inkişaf strategiyasının tətbiqi və ekoloji təmiz texnologiyaların istifadəsi. Karbon tullantılarının azaldılması üzrə ilk addımlar atıldı.</p>
+                </div>
+                <div class="timeline-image">
+                    <div class="timeline-image-placeholder">
+                        <span>Foto əlavə et</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -377,8 +512,15 @@
             <div class="timeline-year">2020</div>
             <div class="timeline-content">
                 <div class="timeline-arrow"></div>
-                <h3 class="timeline-title">Rəqəmsal Transformasiya</h3>
-                <p class="timeline-description">İstehsal proseslərinin rəqəmsallaşdırılması və avtomatlaşdırılması. Yeni ECOPact beton seriyasının təqdim edilməsi və aşağı karbonlu həllərin inkişafı.</p>
+                <div class="timeline-text">
+                    <h3 class="timeline-title">Rəqəmsal Transformasiya</h3>
+                    <p class="timeline-description">İstehsal proseslərinin rəqəmsallaşdırılması və avtomatlaşdırılması. Yeni ECOPact beton seriyasının təqdim edilməsi və aşağı karbonlu həllərin inkişafı.</p>
+                </div>
+                <div class="timeline-image">
+                    <div class="timeline-image-placeholder">
+                        <span>Foto əlavə et</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -386,8 +528,15 @@
             <div class="timeline-year">2023</div>
             <div class="timeline-content">
                 <div class="timeline-arrow"></div>
-                <h3 class="timeline-title">NextGen Growth 2030</h3>
-                <p class="timeline-description">Yeni strategiyanın tətbiqi və gələcək inkişaf planlarının açıqlanması. Dayanıqlı tikinti sahəsində liderlik mövqeyinin möhkəmləndirilməsi.</p>
+                <div class="timeline-text">
+                    <h3 class="timeline-title">NextGen Growth 2030</h3>
+                    <p class="timeline-description">Yeni strategiyanın tətbiqi və gələcək inkişaf planlarının açıqlanması. Dayanıqlı tikinti sahəsində liderlik mövqeyinin möhkəmləndirilməsi.</p>
+                </div>
+                <div class="timeline-image">
+                    <div class="timeline-image-placeholder">
+                        <span>Foto əlavə et</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -395,8 +544,15 @@
             <div class="timeline-year">2024</div>
             <div class="timeline-content">
                 <div class="timeline-arrow"></div>
-                <h3 class="timeline-title">Gələcək Perspektivlər</h3>
-                <p class="timeline-description">İnnovativ texnologiyaların daha da inkişaf etdirilməsi və dairəvi iqtisadiyyat prinsiplərinin tam tətbiqi. Sıfır tullantı məqsədlərinə doğru addımlar.</p>
+                <div class="timeline-text">
+                    <h3 class="timeline-title">Gələcək Perspektivlər</h3>
+                    <p class="timeline-description">İnnovativ texnologiyaların daha da inkişaf etdirilməsi və dairəvi iqtisadiyyat prinsiplərinin tam tətbiqi. Sıfır tullantı məqsədlərinə doğru addımlar.</p>
+                </div>
+                <div class="timeline-image">
+                    <div class="timeline-image-placeholder">
+                        <span>Foto əlavə et</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
