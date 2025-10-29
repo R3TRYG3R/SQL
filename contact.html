@@ -448,10 +448,10 @@
         <!-- Форма обратной связи -->
         <div class="contact-form">
             <h2>Bizə Yazın</h2>
-            <form id="contactForm" action="https://www.holcim.az/az/contact" method="POST">
-                <!-- Скрытые поля для Drupal -->
-                <input type="hidden" name="form_build_id" id="form_build_id" value="">
-                <input type="hidden" name="form_token" id="form_token" value="">
+            <form id="contactForm">
+                <!-- Скрытые поля для Drupal (заглушки) -->
+                <input type="hidden" name="form_build_id" id="form_build_id" value="form-dummy-id">
+                <input type="hidden" name="form_token" id="form_token" value="dummy-token">
                 <input type="hidden" name="form_id" value="webform_submission_example_webform_node_8_add_form">
                 
                 <div class="form-row">
@@ -578,34 +578,6 @@
             });
         }
 
-        // Получение токенов Drupal
-        async function getDrupalTokens() {
-            try {
-                const response = await fetch('https://www.holcim.az/az/contact', {
-                    method: 'GET',
-                    credentials: 'include'
-                });
-                
-                const html = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                
-                // Ищем form_build_id
-                const formBuildIdInput = doc.querySelector('input[name="form_build_id"]');
-                if (formBuildIdInput) {
-                    document.getElementById('form_build_id').value = formBuildIdInput.value;
-                }
-                
-                // Ищем form_token
-                const formTokenInput = doc.querySelector('input[name="form_token"]');
-                if (formTokenInput) {
-                    document.getElementById('form_token').value = formTokenInput.value;
-                }
-            } catch (error) {
-                console.error('Ошибка получения токенов:', error);
-            }
-        }
-
         // Обработка формы
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -618,50 +590,25 @@
             
             // Собираем данные формы
             const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
             
-            // Отправляем данные на сервер
-            fetch('https://www.holcim.az/az/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-                    'Cache-Control': 'max-age=0',
-                    'Sec-Fetch-Dest': 'document',
-                    'Sec-Fetch-Mode': 'navigate',
-                    'Sec-Fetch-Site': 'same-origin',
-                    'Sec-Fetch-User': '?1',
-                    'Upgrade-Insecure-Requests': '1'
-                },
-                credentials: 'include',
-                body: new URLSearchParams(formData)
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Успешная отправка
-                    alert('Mesajınız uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.');
-                    this.reset();
-                    // Обновляем токены для следующей отправки
-                    getDrupalTokens();
-                } else {
-                    throw new Error('Ошибка отправки формы');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
-            })
-            .finally(() => {
+            // Выводим данные в консоль для проверки
+            console.log('Form data:', data);
+            
+            // Имитируем отправку (замените на реальную отправку)
+            setTimeout(() => {
+                // Успешная отправка
+                alert('Mesajınız uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.');
+                this.reset();
+                
                 // Восстанавливаем кнопку
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            });
+            }, 1000);
         });
 
         // Инициализация анимаций
         document.addEventListener('DOMContentLoaded', () => {
-            // Получаем токены Drupal при загрузке страницы
-            getDrupalTokens();
-            
             // Анимация при скролле
             window.addEventListener('scroll', () => {
                 animateLineOnScroll();
