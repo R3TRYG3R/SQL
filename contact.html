@@ -448,16 +448,37 @@
         <!-- Форма обратной связи -->
         <div class="contact-form">
             <h2>Bizə Yazın</h2>
-            <form id="contactForm">
+            <form id="contactForm" action="https://www.holcim.az/az/contact" method="POST">
+                <!-- Скрытые поля для Drupal -->
+                <input type="hidden" name="form_build_id" id="form_build_id" value="">
+                <input type="hidden" name="form_token" id="form_token" value="">
+                <input type="hidden" name="form_id" value="webform_submission_example_webform_node_8_add_form">
+                
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="firstName">Ad *</label>
-                        <input type="text" id="firstName" name="firstName" required>
+                        <label for="first_name">Ad *</label>
+                        <input type="text" id="first_name" name="first_name" required>
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Soyad *</label>
-                        <input type="text" id="lastName" name="lastName" required>
+                        <label for="last_name">Soyad *</label>
+                        <input type="text" id="last_name" name="last_name" required>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_of_birth">Doğum tarixi</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth">
+                </div>
+
+                <div class="form-group">
+                    <label for="employees">İşçi sayı</label>
+                    <select id="employees" name="employees">
+                        <option value="">Seçin</option>
+                        <option value="1-10">1-10</option>
+                        <option value="11-50">11-50</option>
+                        <option value="51-200">51-200</option>
+                        <option value="200+">200+</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -466,35 +487,47 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Telefon</label>
-                    <input type="tel" id="phone" name="phone">
+                    <label for="password">Şifrə</label>
+                    <input type="password" id="password" name="password">
                 </div>
 
                 <div class="form-group">
-                    <label for="company">Şirkət</label>
-                    <input type="text" id="company" name="company">
+                    <label for="address_address">Ünvan</label>
+                    <input type="text" id="address_address" name="address[address]">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address_city">Şəhər</label>
+                        <input type="text" id="address_city" name="address[city]">
+                    </div>
+                    <div class="form-group">
+                        <label for="address_state_province">Rayon</label>
+                        <input type="text" id="address_state_province" name="address[state_province]">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address_postal_code">Poçt indeksi</label>
+                        <input type="text" id="address_postal_code" name="address[postal_code]">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="subject">Mövzu *</label>
-                    <select id="subject" name="subject" required>
-                        <option value="">Mövzu seçin</option>
-                        <option value="general">Ümumi sorğu</option>
-                        <option value="product">Məhsul haqqında</option>
-                        <option value="technical">Texniki dəstək</option>
-                        <option value="partnership">Tərəfdaşlıq</option>
-                        <option value="other">Digər</option>
-                    </select>
+                    <label for="your_interests">Maraq dairələri</label>
+                    <textarea id="your_interests" name="your_interests" placeholder="Maraq dairələrinizi yazın..."></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="message">Mesaj *</label>
-                    <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn" name="op" value="Submit">
+                        Göndər
+                    </button>
                 </div>
-
-                <button type="submit" class="submit-btn">
-                    Göndər
-                </button>
             </form>
         </div>
     </div>
@@ -545,26 +578,90 @@
             });
         }
 
+        // Получение токенов Drupal
+        async function getDrupalTokens() {
+            try {
+                const response = await fetch('https://www.holcim.az/az/contact', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // Ищем form_build_id
+                const formBuildIdInput = doc.querySelector('input[name="form_build_id"]');
+                if (formBuildIdInput) {
+                    document.getElementById('form_build_id').value = formBuildIdInput.value;
+                }
+                
+                // Ищем form_token
+                const formTokenInput = doc.querySelector('input[name="form_token"]');
+                if (formTokenInput) {
+                    document.getElementById('form_token').value = formTokenInput.value;
+                }
+            } catch (error) {
+                console.error('Ошибка получения токенов:', error);
+            }
+        }
+
         // Обработка формы
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Показываем индикатор загрузки
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Göndərilir...';
+            submitBtn.disabled = true;
+            
             // Собираем данные формы
             const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
             
-            // Здесь можно добавить отправку данных на сервер
-            console.log('Form data:', data);
-            
-            // Показываем уведомление
-            alert('Mesajınız uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.');
-            
-            // Очищаем форму
-            this.reset();
+            // Отправляем данные на сервер
+            fetch('https://www.holcim.az/az/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                    'Cache-Control': 'max-age=0',
+                    'Sec-Fetch-Dest': 'document',
+                    'Sec-Fetch-Mode': 'navigate',
+                    'Sec-Fetch-Site': 'same-origin',
+                    'Sec-Fetch-User': '?1',
+                    'Upgrade-Insecure-Requests': '1'
+                },
+                credentials: 'include',
+                body: new URLSearchParams(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Успешная отправка
+                    alert('Mesajınız uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.');
+                    this.reset();
+                    // Обновляем токены для следующей отправки
+                    getDrupalTokens();
+                } else {
+                    throw new Error('Ошибка отправки формы');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert('Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
+            })
+            .finally(() => {
+                // Восстанавливаем кнопку
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
         });
 
         // Инициализация анимаций
         document.addEventListener('DOMContentLoaded', () => {
+            // Получаем токены Drupal при загрузке страницы
+            getDrupalTokens();
+            
             // Анимация при скролле
             window.addEventListener('scroll', () => {
                 animateLineOnScroll();
