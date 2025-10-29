@@ -325,31 +325,32 @@
         /* Accordion стили */
         .accordion-section {
             max-width: 1000px;
-            margin: 30px auto;
+            margin: 40px auto 0;
             padding: 0 20px;
         }
 
         .accordion-item {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 2px solid transparent;
             background-clip: padding-box;
             position: relative;
         }
 
         .accordion-item:hover {
-            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .accordion-item::before {
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 2px;
             background: var(--grad);
             -webkit-mask:
@@ -366,7 +367,7 @@
         }
 
         .accordion-header {
-            padding: 25px 30px;
+            padding: 35px 40px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -374,14 +375,15 @@
             transition: all 0.3s ease;
             position: relative;
             z-index: 1;
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.03), rgba(0, 174, 239, 0.03));
         }
 
         .accordion-header:hover {
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.05), rgba(0, 174, 239, 0.05));
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.08), rgba(0, 174, 239, 0.08));
         }
 
         .accordion-title {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--text-dark);
             margin: 0;
@@ -389,45 +391,97 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             flex: 1;
+            position: relative;
+        }
+
+        .accordion-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--grad);
+            border-radius: 2px;
+            opacity: 0.6;
         }
 
         .accordion-icon {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
+            width: 32px;
+            height: 32px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
             color: var(--text-gray);
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1));
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .accordion-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .accordion-header:hover .accordion-icon::before {
+            opacity: 1;
         }
 
         .accordion-item.active .accordion-icon {
             transform: rotate(180deg);
+            background: var(--grad);
+            color: white;
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.5s ease;
             background: linear-gradient(135deg, rgba(122, 201, 67, 0.02), rgba(0, 174, 239, 0.02));
         }
 
         .accordion-item.active .accordion-content {
-            max-height: 1000px;
+            max-height: 1200px;
         }
 
         .accordion-text {
-            padding: 0 30px 30px;
+            padding: 0 40px 40px;
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.8;
             color: var(--text-gray);
             text-align: justify;
             text-justify: inter-word;
         }
 
         .accordion-text p {
-            margin: 0 0 15px 0;
+            margin: 0 0 20px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .accordion-text p::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #7AC943;
+            font-size: 12px;
+            line-height: 1.8;
         }
 
         .accordion-text p:last-child {
@@ -525,14 +579,28 @@
                 gap: 15px;
             }
             .accordion-header {
-                padding: 20px 15px;
+                padding: 25px 20px;
             }
             .accordion-title {
-                font-size: 18px;
+                font-size: 20px;
+            }
+            .accordion-title::after {
+                width: 40px;
+                height: 2px;
+            }
+            .accordion-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 16px;
             }
             .accordion-text {
-                padding: 0 15px 20px;
+                padding: 0 20px 25px;
                 font-size: 14px;
+                line-height: 1.6;
+            }
+            .accordion-text p {
+                padding-left: 15px;
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -587,6 +655,26 @@
         </div>
     </div>
 
+    <!-- Accordion секция с подробной информацией -->
+    <div class="accordion-section">
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h3 class="accordion-title">ECOPact haqqında ətraflı məlumat</h3>
+                <div class="accordion-icon">▼</div>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-text">
+                    <p>Holcim, aşağı karbonlu tikinti həllərinin çeşidini genişləndirərək Azərbaycanın tikinti sənayesində yeni standartlar müəyyənləşdirir. "ECOPlanet" aşağı karbonlu sementinin 2022-ci ildə və "ECOPact" "yaşıl" betonunun 2024-cü ildə uğurlu təqdimatından sonra Holcim daha bir mühüm nailiyyət əldə edib -Azərbaycanın tikinti sənayesində "ECOPact" beton üçün "Məhsulun Ekoloji Bəyannaməsini" (EPD) alan ilk şirkət olub. Bu uğur Holcim-in regionda şəffaflıq, yüksək performans və dayanıqlılıq sahəsində liderliyə sadiqliyini bir daha təsdiqləyir.</p>
+                    
+                    <p>"Məhsulun Ekoloji Bəyannaməsi" (EPD) - məhsulun bütün "həyat" dövrü ərzində (xammalın çıxarılmasından tutmuş utilizasiyaya qədər) ətraf mühitə təsirini şəffaf şəkildə göstərən, müstəqil şəkildə təsdiqlənmiş beynəlxalq standartlaşdırılmış sənəddir. ISO 14025, EN 15804 və ISO 21930 standartlarına uyğun olaraq hazırlanan EPD-lər memarlara, mühəndislərə və layihəçilərə layihənin hər mərhələsində ekoloji cəhətdən məsul qərarlar qəbul etməyə imkan yaradır. Həyat dövrü qiymətləndirməsinə (LCA) əsaslanaraq, bu sənədlər məhsulun ətraf mühit göstəriciləri barədə dəqiq, obyektiv və təsdiqlənmiş məlumat təqdim edir və Bütün Tikilinin Həyat Dövrü Qiymətləndirilməsi (WBLCA) kimi sistemlər üçün etibarlı baza yaradır.</p>
+                    
+                    <p>Holcim-in "ECOPact" beton üçün "Məhsulun Ekoloji Bəyannaməsi" həyat dövrü qiymətləndirməsi üzrə mütəxəssislərin, müstəqil üçüncü tərəf təsdiqləyicilərin və akkreditə olunmuş "EPD" proqram operatorlarının iştirakı ilə çoxmərhələli, peşəkar proses nəticəsində hazırlanıb. Bu nailiyyət Holcim-in dayanıqlı tikinti sahəsində liderliyini möhkəmləndirir və Azərbaycanın milli dayanıqlılıq məqsədlərinə birbaşa dəstək verir.</p>
+                    
+                    <p>Bu strategiyanın əsas hissəsi Qarabağın "Net-Sıfır karbon emissiya" zonasına çevrilməsidir, burada diqqət yaşıl enerji, ağıllı infrastruktur, dayanıqlı kənd təsərrüfatı və genişmiqyaslı meşə bərpası istiqamətlərinə yönəlib. Holcim, "EPD" ilə təsdiqlənmiş aşağı karbonlu tikinti materialları təqdim etməklə, sənaye mütəxəssislərinə ölkənin iqlim məqsədlərinə töhfə verməyə və xüsusilə Qarabağın bərpası və dayanıqlı inkişafı çərçivəsində yaşıl və davamlı gələcəyin qurulmasında fəal iştirak etməyə imkan yaradır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="ecopact-images">
         <div class="ecopact-image-card">
@@ -605,27 +693,6 @@
             <div class="image-text">
                 <h2>Məhsuldarlıq və Texnologiya</h2>
                 <p>Aşağı karbonlu ECOPact betonu 100% məhsuldarlıq təmin edir, adi betondan heç də geri qalmayan və hətta daha yaxşı xüsusiyyətlərə malikdir. Mehsul əlavəli sement materiali ve kimyevi əlavələr texnologiyasının innovativ qarışığını ehtiva edir, təkrar emala yararlıdır və dövri iqtisadiyyatı dəstəkləyir.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Accordion секция с подробной информацией -->
-    <div class="accordion-section">
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h3 class="accordion-title">ECOPact haqqında ətraflı məlumat</h3>
-                <div class="accordion-icon">▼</div>
-            </div>
-            <div class="accordion-content">
-                <div class="accordion-text">
-                    <p>Holcim, aşağı karbonlu tikinti həllərinin çeşidini genişləndirərək Azərbaycanın tikinti sənayesində yeni standartlar müəyyənləşdirir. "ECOPlanet" aşağı karbonlu sementinin 2022-ci ildə və "ECOPact" "yaşıl" betonunun 2024-cü ildə uğurlu təqdimatından sonra Holcim daha bir mühüm nailiyyət əldə edib -Azərbaycanın tikinti sənayesində "ECOPact" beton üçün "Məhsulun Ekoloji Bəyannaməsini" (EPD) alan ilk şirkət olub. Bu uğur Holcim-in regionda şəffaflıq, yüksək performans və dayanıqlılıq sahəsində liderliyə sadiqliyini bir daha təsdiqləyir.</p>
-                    
-                    <p>"Məhsulun Ekoloji Bəyannaməsi" (EPD) - məhsulun bütün "həyat" dövrü ərzində (xammalın çıxarılmasından tutmuş utilizasiyaya qədər) ətraf mühitə təsirini şəffaf şəkildə göstərən, müstəqil şəkildə təsdiqlənmiş beynəlxalq standartlaşdırılmış sənəddir. ISO 14025, EN 15804 və ISO 21930 standartlarına uyğun olaraq hazırlanan EPD-lər memarlara, mühəndislərə və layihəçilərə layihənin hər mərhələsində ekoloji cəhətdən məsul qərarlar qəbul etməyə imkan yaradır. Həyat dövrü qiymətləndirməsinə (LCA) əsaslanaraq, bu sənədlər məhsulun ətraf mühit göstəriciləri barədə dəqiq, obyektiv və təsdiqlənmiş məlumat təqdim edir və Bütün Tikilinin Həyat Dövrü Qiymətləndirilməsi (WBLCA) kimi sistemlər üçün etibarlı baza yaradır.</p>
-                    
-                    <p>Holcim-in "ECOPact" beton üçün "Məhsulun Ekoloji Bəyannaməsi" həyat dövrü qiymətləndirməsi üzrə mütəxəssislərin, müstəqil üçüncü tərəf təsdiqləyicilərin və akkreditə olunmuş "EPD" proqram operatorlarının iştirakı ilə çoxmərhələli, peşəkar proses nəticəsində hazırlanıb. Bu nailiyyət Holcim-in dayanıqlı tikinti sahəsində liderliyini möhkəmləndirir və Azərbaycanın milli dayanıqlılıq məqsədlərinə birbaşa dəstək verir.</p>
-                    
-                    <p>Bu strategiyanın əsas hissəsi Qarabağın "Net-Sıfır karbon emissiya" zonasına çevrilməsidir, burada diqqət yaşıl enerji, ağıllı infrastruktur, dayanıqlı kənd təsərrüfatı və genişmiqyaslı meşə bərpası istiqamətlərinə yönəlib. Holcim, "EPD" ilə təsdiqlənmiş aşağı karbonlu tikinti materialları təqdim etməklə, sənaye mütəxəssislərinə ölkənin iqlim məqsədlərinə töhfə verməyə və xüsusilə Qarabağın bərpası və dayanıqlı inkişafı çərçivəsində yaşıl və davamlı gələcəyin qurulmasında fəal iştirak etməyə imkan yaradır.</p>
-                </div>
             </div>
         </div>
     </div>
