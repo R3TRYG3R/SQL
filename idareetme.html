@@ -202,7 +202,7 @@
         .certificate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
+            gap: 32px;
             align-items: stretch;
         }
 
@@ -211,6 +211,22 @@
             line-height: 1.7;
             color: var(--text-gray);
             text-align: justify;
+            display: grid;
+            gap: 16px;
+        }
+
+        .certificate-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(140px, 1fr));
+            gap: 16px;
+            justify-items: center;
+        }
+
+        .certificate-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
         }
 
         .certificate-placeholder {
@@ -222,12 +238,20 @@
             justify-content: center;
             color: #3a8f4c;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             padding: 18px;
             text-align: center;
             aspect-ratio: 210 / 297;
-            max-width: 300px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .certificate-arrows {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            color: rgba(0, 84, 166, 0.5);
+            font-size: 28px;
         }
 
         .callout-section {
@@ -361,7 +385,16 @@
             </div>
             <div class="certificate-grid">
                 <p class="certificate-text">Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
-                <div class="certificate-placeholder">Sertifikat fotosu üçün yer</div>
+                <div class="certificate-gallery">
+                    <div class="certificate-item">
+                        <div class="certificate-placeholder">Sertifikat 1 üçün yer</div>
+                        <div class="certificate-arrows">← →</div>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="certificate-placeholder">Sertifikat 2 üçün yer</div>
+                        <div class="certificate-arrows">← →</div>
+                    </div>
+                </div>
             </div>
         </section>
 
