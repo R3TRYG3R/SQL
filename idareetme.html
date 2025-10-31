@@ -215,18 +215,12 @@
             gap: 16px;
         }
 
-        .certificate-gallery {
+        .certificate-viewer {
             display: grid;
-            grid-template-columns: repeat(2, minmax(140px, 1fr));
-            gap: 16px;
-            justify-items: center;
-        }
-
-        .certificate-item {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
             align-items: center;
+            justify-items: center;
         }
 
         .certificate-placeholder {
@@ -243,15 +237,21 @@
             text-align: center;
             aspect-ratio: 210 / 297;
             width: 100%;
-            max-width: 280px;
+            max-width: 310px;
         }
 
-        .certificate-arrows {
+        .nav-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 84, 166, 0.12);
             display: flex;
             align-items: center;
-            gap: 48px;
-            color: rgba(0, 84, 166, 0.5);
-            font-size: 28px;
+            justify-content: center;
+            color: rgba(0, 84, 166, 0.7);
+            font-size: 20px;
+            font-weight: 700;
+            border: 1px solid rgba(0, 84, 166, 0.2);
         }
 
         .callout-section {
@@ -385,15 +385,10 @@
             </div>
             <div class="certificate-grid">
                 <p class="certificate-text">Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
-                <div class="certificate-gallery">
-                    <div class="certificate-item">
-                        <div class="certificate-placeholder">Sertifikat 1 üçün yer</div>
-                        <div class="certificate-arrows">← →</div>
-                    </div>
-                    <div class="certificate-item">
-                        <div class="certificate-placeholder">Sertifikat 2 üçün yer</div>
-                        <div class="certificate-arrows">← →</div>
-                    </div>
+                <div class="certificate-viewer">
+                    <div class="nav-arrow">←</div>
+                    <div class="certificate-placeholder">Sertifikatın 1-ci səhifəsi üçün yer</div>
+                    <div class="nav-arrow">→</div>
                 </div>
             </div>
         </section>
