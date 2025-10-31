@@ -106,15 +106,37 @@
             gap: 14px;
             padding: 14px 20px;
             border-radius: 18px;
-            background: rgba(255, 255, 255, 0.75);
-            border: 2px dashed rgba(0, 174, 239, 0.55);
+            background: rgba(255, 255, 255, 0.78);
+            border: 2px solid rgba(0, 174, 239, 0.5);
             font-weight: 600;
             color: #0071b8;
             backdrop-filter: blur(6px);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         }
 
-        .link-placeholder span {
-            display: none;
+        .link-placeholder::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(0, 174, 239, 0.18), rgba(0, 84, 166, 0.2));
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+        }
+
+        .link-placeholder::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.35);
+            transform: translateX(-110%);
+            opacity: 0.8;
+            pointer-events: none;
         }
 
         .dual-section {
@@ -168,6 +190,21 @@
             position: relative;
             background: rgba(0, 174, 239, 0.08);
             border-radius: 14px;
+        }
+
+        .link-placeholder:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 28px rgba(0, 174, 239, 0.18);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .link-placeholder:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .link-placeholder:hover::after {
+            animation: swipeShimmer 0.65s ease;
         }
 
         .certificate-section {
@@ -362,6 +399,11 @@
             0% { transform: rotateY(0deg); }
             50% { transform: rotateY(12deg); }
             100% { transform: rotateY(0deg); }
+        }
+
+        @keyframes swipeShimmer {
+            0% { transform: translateX(-110%); opacity: 0.8; }
+            100% { transform: translateX(110%); opacity: 0; }
         }
 
         body:not(.loaded) .hero-section,
