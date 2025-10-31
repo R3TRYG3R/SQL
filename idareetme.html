@@ -244,6 +244,26 @@
             aspect-ratio: 210 / 297;
             width: 100%;
             max-width: 310px;
+            position: relative;
+            overflow: hidden;
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        .certificate-placeholder::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.35);
+            transform: translateX(-120%);
+            pointer-events: none;
+        }
+
+        .certificate-placeholder.page-transition::after {
+            animation: pageSwipe 0.55s ease forwards;
+        }
+
+        .certificate-placeholder.flip {
+            animation: cardFlip 0.45s ease;
         }
 
         .nav-arrow {
@@ -330,6 +350,18 @@
             40% { transform: scale(1.25); }
             70% { transform: scale(0.95); }
             100% { transform: scale(1); }
+        }
+
+        @keyframes pageSwipe {
+            0% { transform: translateX(-120%); opacity: 0.6; }
+            50% { transform: translateX(0); opacity: 0.25; }
+            100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @keyframes cardFlip {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(12deg); }
+            100% { transform: rotateY(0deg); }
         }
 
         body:not(.loaded) .hero-section,
@@ -474,6 +506,12 @@
             function updateViewer(step){
                 index = (index + step + placeholders.length) % placeholders.length;
                 viewer.textContent = placeholders[index];
+                viewer.classList.remove('page-transition');
+                void viewer.offsetWidth;
+                viewer.classList.add('page-transition');
+                viewer.classList.remove('flip');
+                void viewer.offsetWidth;
+                viewer.classList.add('flip');
             }
 
             arrows.forEach(arrow => {
@@ -487,6 +525,15 @@
 
             window.addEventListener('load', () => {
                 document.body.classList.add('loaded');
+            });
+
+            viewer.addEventListener('animationend', (event) => {
+                if (event.animationName === 'cardFlip') {
+                    viewer.classList.remove('flip');
+                }
+                if (event.animationName === 'pageSwipe') {
+                    viewer.classList.remove('page-transition');
+                }
             });
         })();
     </script>
