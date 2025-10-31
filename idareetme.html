@@ -180,35 +180,16 @@
             gap: 24px;
         }
 
-        .certificate-header {
-            display: grid;
-            gap: 12px;
-        }
-
-        .certificate-header h3 {
-            margin: 0;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .certificate-header span {
-            font-size: 13px;
-            color: var(--text-gray);
-            letter-spacing: 0.2px;
-            text-transform: uppercase;
-        }
-
         .certificate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 32px;
-            align-items: center;
+            align-items: start;
         }
 
         .certificate-text {
-            font-size: 15px;
-            line-height: 1.7;
+            font-size: 16px;
+            line-height: 1.75;
             color: var(--text-gray);
             text-align: justify;
             display: grid;
@@ -220,9 +201,32 @@
             display: grid;
             grid-template-columns: auto 1fr auto;
             gap: 18px;
-            align-items: center;
             justify-items: center;
+            align-items: center;
+            justify-content: center;
+            row-gap: 14px;
             align-self: center;
+        }
+
+        .certificate-heading {
+            text-align: center;
+            display: grid;
+            gap: 6px;
+            grid-column: 1 / -1;
+        }
+
+        .certificate-heading h3 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .certificate-heading span {
+            font-size: 13px;
+            color: var(--text-gray);
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
         }
 
         .certificate-placeholder {
@@ -381,13 +385,13 @@
         </section>
 
         <section class="certificate-section">
-            <div class="certificate-header">
-                <h3>ISO 37001:2016 Sertifikatı</h3>
-                <span>Korrupsiyaya Qarşı İdarəetmə Sistemi</span>
-            </div>
             <div class="certificate-grid">
                 <p class="certificate-text">Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
                 <div class="certificate-viewer">
+                    <div class="certificate-heading">
+                        <h3>ISO 37001:2016 Sertifikatı</h3>
+                        <span>Korrupsiyaya Qarşı İdarəetmə Sistemi</span>
+                    </div>
                     <div class="nav-arrow">←</div>
                     <div class="certificate-placeholder">Sertifikatın 1-ci səhifəsi üçün yer</div>
                     <div class="nav-arrow">→</div>
