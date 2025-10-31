@@ -12,6 +12,10 @@
             --bg: #f3f6fa;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: "Holcim Type", sans-serif;
             background: var(--bg);
@@ -20,325 +24,351 @@
             color: var(--text-dark);
         }
 
+        .page-wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 60px 20px 100px;
+            display: grid;
+            gap: 56px;
+        }
+
         .section-title {
-            max-width: 1000px;
-            margin: 0 auto 12px;
+            margin: 0;
             text-align: center;
             font-weight: 700;
-            font-size: clamp(20px, 2.5vw, 32px);
-            line-height: 1.2;
-            color: var(--text-dark);
+            font-size: clamp(22px, 3vw, 34px);
+            letter-spacing: 0.5px;
             position: relative;
+            color: var(--text-dark);
         }
 
         .section-title::after {
             content: "";
             display: block;
-            width: 160px;
+            width: 170px;
             height: 4px;
-            margin: 12px auto 0;
+            margin: 16px auto 0;
             border-radius: 999px;
             background: var(--grad);
         }
 
-        .content-wrapper {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px 60px;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(280px, 1fr));
-            gap: 32px;
-        }
-
-        .intro-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.08), rgba(0, 174, 239, 0.08), rgba(0, 84, 166, 0.08));
-            border-radius: 24px;
-            padding: 48px;
+        .hero-section {
             position: relative;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+            border-radius: 28px;
+            padding: clamp(32px, 5vw, 60px);
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.12), rgba(0, 174, 239, 0.15), rgba(0, 84, 166, 0.18));
             overflow: hidden;
+            box-shadow: 0 28px 65px rgba(0,0,0,0.12);
         }
 
-        .intro-card::before {
+        .hero-section::before {
             content: "";
             position: absolute;
             inset: 0;
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 2px;
             background: var(--grad);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
+            opacity: 0.55;
         }
 
-        .intro-card h2 {
-            margin: 0 0 20px;
-            font-size: clamp(18px, 2vw, 26px);
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 22px;
+            color: var(--text-dark);
+        }
+
+        .hero-content h2 {
+            margin: 0;
+            font-size: clamp(22px, 3vw, 30px);
             font-weight: 700;
             background: var(--grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .intro-card p {
+        .hero-content p {
             margin: 0;
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.75;
             color: var(--text-gray);
             text-align: justify;
         }
 
-        .info-card {
+        .link-placeholder {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 2px dashed rgba(0, 174, 239, 0.55);
+            font-weight: 600;
+            color: #0071b8;
+            backdrop-filter: blur(6px);
+        }
+
+        .link-placeholder span {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .dual-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
             background: #fff;
-            border-radius: 20px;
-            padding: 32px;
+            border-radius: 22px;
+            padding: 30px;
+            border: 1px solid rgba(0, 84, 166, 0.12);
             position: relative;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.10);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: grid;
+            gap: 18px;
         }
 
-        .info-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.15);
-        }
-
-        .info-card::before {
+        .feature-card::before {
             content: "";
             position: absolute;
             inset: 0;
-            border-radius: 20px;
-            padding: 2px;
+            border-radius: 22px;
+            padding: 1px;
             background: var(--grad);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            opacity: 0.25;
         }
 
-        .info-card:hover::before {
-            opacity: 1;
-        }
-
-        .info-card h3 {
+        .feature-card h3 {
             margin: 0;
             font-size: 20px;
             font-weight: 700;
             color: var(--text-dark);
+            position: relative;
         }
 
-        .info-card p {
+        .feature-card p {
             margin: 0;
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.65;
             color: var(--text-gray);
             text-align: justify;
-        }
-
-        .cta-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 16px 20px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(0, 174, 239, 0.08), rgba(0, 84, 166, 0.08));
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .cta-placeholder span {
-            font-size: 14px;
-            color: var(--text-gray);
-            font-weight: 500;
-        }
-
-        .certificate-card {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            align-items: center;
-            background: #fff;
-            border-radius: 24px;
-            padding: 36px;
             position: relative;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
 
-        .certificate-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            padding: 2px;
-            background: var(--grad);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+        .feature-card .link-placeholder {
+            position: relative;
+            background: rgba(0, 174, 239, 0.08);
+            border-radius: 14px;
         }
 
-        .certificate-info h3 {
-            margin: 0 0 12px;
+        .certificate-section {
+            background: #fff;
+            border-radius: 26px;
+            padding: clamp(28px, 4vw, 48px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            display: grid;
+            gap: 28px;
+        }
+
+        .certificate-header {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .certificate-header h3 {
+            margin: 0;
             font-size: 22px;
             font-weight: 700;
             color: var(--text-dark);
         }
 
-        .certificate-info p {
-            margin: 0;
+        .certificate-header span {
+            font-size: 14px;
+            color: var(--text-gray);
+            letter-spacing: 0.3px;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .certificate-text {
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-gray);
             text-align: justify;
         }
 
         .certificate-placeholder {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.1), rgba(0, 174, 239, 0.1));
-            border: 2px dashed rgba(0, 174, 239, 0.4);
+            border-radius: 20px;
+            border: 2px dashed rgba(122, 201, 67, 0.5);
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.08), rgba(0, 174, 239, 0.08));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #00AEEF;
+            color: #3a8f4c;
             font-weight: 600;
             font-size: 14px;
+            padding: 28px;
             text-align: center;
-            padding: 20px;
+            min-height: 320px;
         }
 
-        .integrity-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(0, 174, 239, 0.1), rgba(0, 84, 166, 0.1));
-            border-radius: 24px;
-            padding: 40px;
+        .callout-section {
+            background: linear-gradient(135deg, rgba(0, 84, 166, 0.12), rgba(0, 174, 239, 0.18));
+            border-radius: 26px;
+            padding: clamp(28px, 4vw, 46px);
             position: relative;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+            color: var(--text-dark);
+            overflow: hidden;
         }
 
-        .integrity-card::before {
+        .callout-section::before {
             content: "";
             position: absolute;
             inset: 0;
-            border-radius: 24px;
+            border-radius: 26px;
             padding: 2px;
             background: var(--grad);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
+            opacity: 0.45;
         }
 
-        .integrity-card h3 {
-            margin: 0 0 18px;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-dark);
+        .callout-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 20px;
         }
 
-        .integrity-card p {
+        .callout-content p {
             margin: 0;
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.75;
             color: var(--text-gray);
             text-align: justify;
         }
 
-        @media (max-width: 900px) {
-            .content-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .intro-card,
-            .certificate-card,
-            .integrity-card {
-                padding: 32px;
-            }
+        .integrity-emphasis {
+            border-left: 4px solid #00AEEF;
+            padding-left: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
         }
 
-        @media (max-width: 540px) {
-            .intro-card {
-                padding: 28px;
+        @media (max-width: 720px) {
+            .page-wrapper {
+                gap: 44px;
             }
 
-            .info-card {
+            .feature-card {
                 padding: 24px;
             }
 
-            .certificate-card {
-                padding: 28px;
-            }
-
-            .integrity-card {
-                padding: 28px;
+            .certificate-grid {
+                grid-template-columns: 1fr;
             }
 
             .certificate-placeholder {
-                aspect-ratio: 2.6 / 3;
-                padding: 16px;
-                font-size: 13px;
+                min-height: 260px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-wrapper {
+                padding-top: 40px;
+                padding-bottom: 80px;
+            }
+
+            .hero-section {
+                border-radius: 22px;
+                padding: 28px;
+            }
+
+            .link-placeholder {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-card::before,
+            .hero-section::before,
+            .callout-section::before {
+                opacity: 0.35;
             }
         }
     </style>
 </head>
 
 <body>
-    <h1 class="section-title">İDARƏETMƏ VƏ ETİK DƏYƏRLƏR</h1>
+    <div class="page-wrapper">
+        <header>
+            <h1 class="section-title">İDARƏETMƏ VƏ ETİK DƏYƏRLƏR</h1>
+        </header>
 
-    <div class="content-wrapper">
-        <div class="intro-card">
-            <h2>Dürüstlük Üzərində Qurulmuş İdarəetmə</h2>
-            <p>Biz hər zaman qanunlara, daxili qaydalarımıza və ən yüksək etik prinsiplərə əməl edirik. Bizim üçün dürüstlük, şəffaflıq və tərəfdaşlarla açıq münasibət əsas dəyərlərdir. Davranış Kodeksi bütün iş fəaliyyətlərimizin əsasını təşkil edir və bütün əməkdaşlarımız üçün məcburidir. Sağlam düşüncə və ümumi məntiqə əsaslanaraq, bütün fəaliyyətlərimizi ədalətli, məsuliyyətli və hər kəs üçün təhlükəsiz şəkildə həyata keçirməyə çalışırıq.</p>
-        </div>
-
-        <div class="info-card">
-            <h3>Davranış Kodeksi</h3>
-            <p>Holcim-də Davranış Kodeksi əməkdaşların hər bir qərarına istiqamət verir, çünki dürüstlük və şəffaflıq iş mədəniyyətimizin ayrılmaz hissəsidir.</p>
-            <div class="cta-placeholder">
-                Davranış Kodeksinə keçid üçün yer
-                <span>Yaxında əlavə olunacaq</span>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Dürüstlük Üzərində Qurulan Holcim Mədəniyyəti</h2>
+                <p>Biz hər zaman qanunlara, daxili qaydalarımıza və ən yüksək etik prinsiplərə əməl edirik. Bizim üçün dürüstlük, şəffaflıq və tərəfdaşlarla açıq münasibət əsas dəyərlərdir. Davranış Kodeksi bütün iş fəaliyyətlərimizin əsasını təşkil edir və bütün əməkdaşlarımız üçün məcburidir. Sağlam düşüncə və ümumi məntiqə əsaslanaraq, bütün fəaliyyətlərimizi ədalətli, məsuliyyətli və hər kəs üçün təhlükəsiz şəkildə həyata keçirməyə çalışırıq.</p>
+                <div class="link-placeholder">
+                    Davranış Kodeksinə keçid üçün yer
+                    <span>Rəsmi link əlavə olunacaq</span>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="info-card">
-            <h3>Təchizatçılar üçün Davranış Kodeksi</h3>
-            <p>Holcim dayanıqlı inkişafa sadiq olan təchizatçılarla əməkdaşlığa üstünlük verir. Məqsədimiz müştərilərimiz üçün səmərəli satınalma prosesini təmin etmək və məsuliyyətli təchizat zəncirinin idarə olunmasını nümayiş etdirmək üçün təchizatçılarla birgə çalışmaqdır.</p>
-            <div class="cta-placeholder">
-                Təchizatçılar üçün Davranış Kodeksi linki
-                <span>Yaxında əlavə olunacaq</span>
-            </div>
-        </div>
+        <section class="dual-section">
+            <article class="feature-card">
+                <h3>İşçilər üçün Davranış Kodeksi</h3>
+                <p>Holcim-də Davranış Kodeksi hər gün verdiyimiz qərarlara istiqamət verir. Dürüstlük və şəffaflıq iş mədəniyyətimizin ayrılmaz hissəsi olaraq qalır və şirkət daxilində etibarı möhkəmləndirir.</p>
+                <div class="link-placeholder">
+                    Davranış Kodeksinin sənədi
+                    <span>Keçid tezliklə aktiv olacaq</span>
+                </div>
+            </article>
 
-        <div class="certificate-card">
-            <div class="certificate-info">
+            <article class="feature-card">
+                <h3>Təchizatçılar üçün Davranış Kodeksi</h3>
+                <p>Holcim dayanıqlı inkişafa sadiq olan təchizatçılarla əməkdaşlığa üstünlük verir. Məqsədimiz müştərilərimiz üçün səmərəli satınalma prosesini təmin etmək və məsuliyyətli təchizat zəncirinin idarə olunmasını nümayiş etdirmək üçün təchizatçılarla birgə çalışmaqdır.</p>
+                <div class="link-placeholder">
+                    Təchizatçılar üçün Davranış Kodeksi
+                    <span>Keçid tezliklə aktiv olacaq</span>
+                </div>
+            </article>
+        </section>
+
+        <section class="certificate-section">
+            <div class="certificate-header">
                 <h3>ISO 37001:2016 Sertifikatı</h3>
-                <p>Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
+                <span>Korrupsiyaya Qarşı İdarəetmə Sistemi</span>
             </div>
-            <div class="certificate-placeholder">Sertifikat fotosu üçün yer</div>
-        </div>
+            <div class="certificate-grid">
+                <p class="certificate-text">Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
+                <div class="certificate-placeholder">Sertifikat fotosu üçün yer</div>
+            </div>
+        </section>
 
-        <div class="integrity-card">
-            <h3>Dürüst Fəaliyyət Holcim-in Gücüdür</h3>
-            <p>Dürüst fəaliyyət "Holcim" şirkətinin dayanıqlı inşaat sahəsində aparıcı tərəfdaş olmasının açarıdır. Biz dürüstlük sayəsində bizə olan etibarı artırır, nüfuzumuzu formalaşdırır, habelə əməkdaş, müştəri və səhmdarlarımız üçün dəyər yaradırıq.</p>
-        </div>
-
-        <div class="info-card" style="grid-column: 1 / -1;">
-            <h3>Integrity Line ilə Əlaqə</h3>
-            <p>Nə isə sizə yanlış görünürsə və ya hər hansı bir qanunsuzluqdan, siyasət pozuntularından və ya məxfi biznes məlumatının icazəsiz açıqlanmasından şübhələnirsinizsə, “Integrity Line” vasitəsilə bunu bizə bildirməyinizi şiddətlə tövsiyə edirik.</p>
-        </div>
+        <section class="callout-section">
+            <div class="callout-content">
+                <p>Dürüst fəaliyyət "Holcim" şirkətinin dayanıqlı inşaat sahəsində aparıcı tərəfdaş olmasının açarıdır. Biz dürüstlük sayəsində bizə olan etibarı artırır, nüfuzumuzu formalaşdırır, habelə əməkdaş, müştəri və səhmdarlarımız üçün dəyər yaradırıq.</p>
+                <p class="integrity-emphasis">Nə isə sizə yanlış görünürsə və ya hər hansı bir qanunsuzluqdan, siyasət pozuntularından və ya məxfi biznes məlumatının icazəsiz açıqlanmasından şübhələnirsinizsə, “Integrity Line” vasitəsilə bunu bizə bildirməyinizi şiddətlə tövsiyə edirik.</p>
+            </div>
+        </section>
     </div>
 </body>
 </html>
