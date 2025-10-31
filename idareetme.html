@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İdarəetmə və Etika</title>
+    <style>
+        :root {
+            --grad: linear-gradient(135deg, #7AC943, #00AEEF, #0054A6);
+            --text-dark: #2b2b2b;
+            --text-gray: #555;
+            --bg: #f3f6fa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Holcim Type", sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        .page-wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 60px 20px 100px;
+            display: grid;
+            gap: 56px;
+        }
+
+        .section-title {
+            margin: 0;
+            text-align: center;
+            font-weight: 700;
+            font-size: clamp(22px, 3vw, 34px);
+            letter-spacing: 0.5px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 170px;
+            height: 4px;
+            margin: 16px auto 0;
+            border-radius: 999px;
+            background: var(--grad);
+        }
+
+        .hero-section {
+            position: relative;
+            border-radius: 28px;
+            padding: clamp(32px, 5vw, 60px);
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.12), rgba(0, 174, 239, 0.15), rgba(0, 84, 166, 0.18));
+            overflow: hidden;
+            box-shadow: 0 28px 65px rgba(0,0,0,0.12);
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.55;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 22px;
+            color: var(--text-dark);
+            animation: fadeUp 0.9s ease 0.05s both;
+        }
+
+        .hero-content h2 {
+            margin: 0;
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 700;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        .link-placeholder {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.78);
+            border: 2px solid rgba(0, 174, 239, 0.5);
+            font-weight: 600;
+            color: #0071b8;
+            backdrop-filter: blur(6px);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .link-placeholder::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(0, 174, 239, 0.18), rgba(0, 84, 166, 0.2));
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+        }
+
+        .link-placeholder::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.35);
+            transform: translateX(-110%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .dual-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            animation: fadeUp 0.9s ease 0.1s both;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 22px;
+            padding: 30px;
+            border: 1px solid rgba(0, 84, 166, 0.12);
+            position: relative;
+            display: grid;
+            gap: 18px;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            padding: 1px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.25;
+        }
+
+        .feature-card h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .feature-card p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text-gray);
+            text-align: justify;
+            position: relative;
+        }
+
+        .feature-card .link-placeholder {
+            position: relative;
+            background: rgba(0, 174, 239, 0.08);
+            border-radius: 14px;
+        }
+
+        .link-placeholder:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 28px rgba(0, 174, 239, 0.18);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .link-placeholder:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .link-placeholder:hover::after {
+            animation: swipeShimmer 0.65s ease;
+        }
+
+        .certificate-section {
+            background: #fff;
+            border-radius: 26px;
+            padding: clamp(28px, 4vw, 48px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            display: grid;
+            gap: 24px;
+            animation: fadeUp 0.9s ease 0.15s both;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+            align-items: start;
+        }
+
+        .certificate-text {
+            font-size: clamp(17px, 2vw, 22px);
+            line-height: 1.85;
+            color: var(--text-gray);
+            text-align: justify;
+            display: grid;
+            gap: 20px;
+            align-self: center;
+        }
+
+        .certificate-viewer {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
+            justify-items: center;
+            align-items: center;
+            justify-content: center;
+            row-gap: 14px;
+            align-self: center;
+        }
+
+        .certificate-heading {
+            text-align: center;
+            display: grid;
+            gap: 6px;
+            grid-column: 1 / -1;
+        }
+
+        .certificate-heading h3 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .certificate-heading span {
+            font-size: 13px;
+            color: var(--text-gray);
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+        }
+
+        .certificate-placeholder {
+            border-radius: 18px;
+            border: 2px dashed rgba(122, 201, 67, 0.55);
+            background: linear-gradient(135deg, rgba(122, 201, 67, 0.06), rgba(0, 174, 239, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3a8f4c;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 18px;
+            text-align: center;
+            aspect-ratio: 210 / 297;
+            width: 100%;
+            max-width: 310px;
+            position: relative;
+            overflow: hidden;
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        .certificate-placeholder::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.35);
+            transform: translateX(-120%);
+            pointer-events: none;
+        }
+
+        .certificate-placeholder.page-transition::after {
+            animation: pageSwipe 0.55s ease forwards;
+        }
+
+        .certificate-placeholder.flip {
+            animation: cardFlip 0.45s ease;
+        }
+
+        .nav-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 84, 166, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 84, 166, 0.7);
+            font-size: 20px;
+            font-weight: 700;
+            border: 1px solid rgba(0, 84, 166, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.05);
+            background: rgba(0, 84, 166, 0.18);
+        }
+
+        .callout-section {
+            background: linear-gradient(135deg, rgba(0, 84, 166, 0.12), rgba(0, 174, 239, 0.18));
+            border-radius: 26px;
+            padding: clamp(28px, 4vw, 46px);
+            position: relative;
+            color: var(--text-dark);
+            overflow: hidden;
+            animation: fadeUp 0.9s ease 0.2s both;
+        }
+
+        .callout-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 26px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.45;
+        }
+
+        .callout-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 20px;
+        }
+
+        .callout-content p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.28);
+            }
+            50% {
+                box-shadow: 0 0 0 12px rgba(0, 174, 239, 0);
+            }
+        }
+
+        @keyframes arrowPop {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.25); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pageSwipe {
+            0% { transform: translateX(-120%); opacity: 0.6; }
+            50% { transform: translateX(0); opacity: 0.25; }
+            100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @keyframes cardFlip {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(12deg); }
+            100% { transform: rotateY(0deg); }
+        }
+
+        @keyframes swipeShimmer {
+            0% { transform: translateX(-110%); opacity: 0.8; }
+            100% { transform: translateX(110%); opacity: 0; }
+        }
+
+        body:not(.loaded) .hero-section,
+        body:not(.loaded) .dual-section,
+        body:not(.loaded) .certificate-section,
+        body:not(.loaded) .callout-section {
+            animation-play-state: paused;
+        }
+
+        body.loaded .hero-section,
+        body.loaded .dual-section,
+        body.loaded .certificate-section,
+        body.loaded .callout-section {
+            animation-play-state: running;
+        }
+
+        .certificate-placeholder {
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        .nav-arrow.clicked {
+            animation: arrowPop 0.35s ease;
+        }
+
+        .integrity-emphasis {
+            border-left: 4px solid #00AEEF;
+            padding-left: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 720px) {
+            .page-wrapper {
+                gap: 44px;
+            }
+
+            .feature-card {
+                padding: 24px;
+            }
+
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate-placeholder {
+                min-height: 260px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-wrapper {
+                padding-top: 40px;
+                padding-bottom: 80px;
+            }
+
+            .hero-section {
+                border-radius: 22px;
+                padding: 28px;
+            }
+
+            .link-placeholder {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-card::before,
+            .hero-section::before,
+            .callout-section::before {
+                opacity: 0.35;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <h1 class="section-title">İDARƏETMƏ VƏ ETİK DƏYƏRLƏR</h1>
+        </header>
+
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Dürüstlük Üzərində Qurulan Holcim Mədəniyyəti</h2>
+                <p>Biz hər zaman qanunlara, daxili qaydalarımıza və ən yüksək etik prinsiplərə əməl edirik. Bizim üçün dürüstlük, şəffaflıq və tərəfdaşlarla açıq münasibət əsas dəyərlərdir. Davranış Kodeksi bütün iş fəaliyyətlərimizin əsasını təşkil edir və bütün əməkdaşlarımız üçün məcburidir. Sağlam düşüncə və ümumi məntiqə əsaslanaraq, bütün fəaliyyətlərimizi ədalətli, məsuliyyətli və hər kəs üçün təhlükəsiz şəkildə həyata keçirməyə çalışırıq.</p>
+                <div class="link-placeholder">
+                    Davranış Kodeksinə keçid üçün yer
+                </div>
+            </div>
+        </section>
+
+        <section class="dual-section">
+            <article class="feature-card">
+                <h3>İşçilər üçün Davranış Kodeksi</h3>
+                <p>Holcim-də Davranış Kodeksi hər gün verdiyimiz qərarlara istiqamət verir. Dürüstlük və şəffaflıq iş mədəniyyətimizin ayrılmaz hissəsi olaraq qalır və şirkət daxilində etibarı möhkəmləndirir.</p>
+                <div class="link-placeholder">
+                    Davranış Kodeksinin sənədi
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <h3>Təchizatçılar üçün Davranış Kodeksi</h3>
+                <p>Holcim dayanıqlı inkişafa sadiq olan təchizatçılarla əməkdaşlığa üstünlük verir. Məqsədimiz müştərilərimiz üçün səmərəli satınalma prosesini təmin etmək və məsuliyyətli təchizat zəncirinin idarə olunmasını nümayiş etdirmək üçün təchizatçılarla birgə çalışmaqdır.</p>
+                <div class="link-placeholder">
+                    Təchizatçılar üçün Davranış Kodeksi
+                </div>
+            </article>
+        </section>
+
+        <section class="certificate-section">
+            <div class="certificate-grid">
+                <p class="certificate-text">Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
+                <div class="certificate-viewer">
+                    <div class="certificate-heading">
+                        <h3>ISO 37001:2016 Sertifikatı</h3>
+                        <span>Korrupsiyaya Qarşı İdarəetmə Sistemi</span>
+                    </div>
+                    <div class="nav-arrow">←</div>
+                    <div class="certificate-placeholder">Sertifikatın 1-ci səhifəsi üçün yer</div>
+                    <div class="nav-arrow">→</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="callout-section">
+            <div class="callout-content">
+                <p>Dürüst fəaliyyət "Holcim" şirkətinin dayanıqlı inşaat sahəsində aparıcı tərəfdaş olmasının açarıdır. Biz dürüstlük sayəsində bizə olan etibarı artırır, nüfuzumuzu formalaşdırır, habelə əməkdaş, müştəri və səhmdarlarımız üçün dəyər yaradırıq.</p>
+                <p class="integrity-emphasis">Nə isə sizə yanlış görünürsə və ya hər hansı bir qanunsuzluqdan, siyasət pozuntularından və ya məxfi biznes məlumatının icazəsiz açıqlanmasından şübhələnirsinizsə, “Integrity Line” vasitəsilə bunu bizə bildirməyinizi şiddətlə tövsiyə edirik.</p>
+            </div>
+        </section>
+    </div>
+    <script>
+        (function(){
+            const placeholders = [
+                'Sertifikatın 1-ci səhifəsi üçün yer',
+                'Sertifikatın 2-ci səhifəsi üçün yer'
+            ];
+            let index = 0;
+
+            const viewer = document.querySelector('.certificate-placeholder');
+            const arrows = document.querySelectorAll('.nav-arrow');
+
+            function updateViewer(step){
+                index = (index + step + placeholders.length) % placeholders.length;
+                viewer.textContent = placeholders[index];
+                viewer.classList.remove('page-transition');
+                void viewer.offsetWidth;
+                viewer.classList.add('page-transition');
+                viewer.classList.remove('flip');
+                void viewer.offsetWidth;
+                viewer.classList.add('flip');
+            }
+
+            arrows.forEach(arrow => {
+                arrow.addEventListener('click', () => {
+                    const step = arrow.textContent.trim() === '→' ? 1 : -1;
+                    updateViewer(step);
+                    arrow.classList.add('clicked');
+                    setTimeout(() => arrow.classList.remove('clicked'), 350);
+                });
+            });
+
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+            });
+
+            viewer.addEventListener('animationend', (event) => {
+                if (event.animationName === 'cardFlip') {
+                    viewer.classList.remove('flip');
+                }
+                if (event.animationName === 'pageSwipe') {
+                    viewer.classList.remove('page-transition');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
