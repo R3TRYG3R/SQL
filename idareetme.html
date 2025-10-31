@@ -255,6 +255,13 @@
             font-size: 20px;
             font-weight: 700;
             border: 1px solid rgba(0, 84, 166, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.05);
+            background: rgba(0, 84, 166, 0.18);
         }
 
         .callout-section {
@@ -400,5 +407,29 @@
             </div>
         </section>
     </div>
+    <script>
+        (function(){
+            const placeholders = [
+                'Sertifikatın 1-ci səhifəsi üçün yer',
+                'Sertifikatın 2-ci səhifəsi üçün yer'
+            ];
+            let index = 0;
+
+            const viewer = document.querySelector('.certificate-placeholder');
+            const arrows = document.querySelectorAll('.nav-arrow');
+
+            function updateViewer(step){
+                index = (index + step + placeholders.length) % placeholders.length;
+                viewer.textContent = placeholders[index];
+            }
+
+            arrows.forEach(arrow => {
+                arrow.addEventListener('click', () => {
+                    const step = arrow.textContent.trim() === '→' ? 1 : -1;
+                    updateViewer(step);
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
