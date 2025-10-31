@@ -80,6 +80,7 @@
             display: grid;
             gap: 22px;
             color: var(--text-dark);
+            animation: fadeUp 0.9s ease 0.05s both;
         }
 
         .hero-content h2 {
@@ -120,6 +121,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 28px;
+            animation: fadeUp 0.9s ease 0.1s both;
         }
 
         .feature-card {
@@ -175,6 +177,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.12);
             display: grid;
             gap: 24px;
+            animation: fadeUp 0.9s ease 0.15s both;
         }
 
         .certificate-grid {
@@ -271,6 +274,7 @@
             position: relative;
             color: var(--text-dark);
             overflow: hidden;
+            animation: fadeUp 0.9s ease 0.2s both;
         }
 
         .callout-section::before {
@@ -299,6 +303,55 @@
             line-height: 1.75;
             color: var(--text-gray);
             text-align: justify;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.28);
+            }
+            50% {
+                box-shadow: 0 0 0 12px rgba(0, 174, 239, 0);
+            }
+        }
+
+        @keyframes arrowPop {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.25); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        body:not(.loaded) .hero-section,
+        body:not(.loaded) .dual-section,
+        body:not(.loaded) .certificate-section,
+        body:not(.loaded) .callout-section {
+            animation-play-state: paused;
+        }
+
+        body.loaded .hero-section,
+        body.loaded .dual-section,
+        body.loaded .certificate-section,
+        body.loaded .callout-section {
+            animation-play-state: running;
+        }
+
+        .certificate-placeholder {
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        .nav-arrow.clicked {
+            animation: arrowPop 0.35s ease;
         }
 
         .integrity-emphasis {
@@ -427,7 +480,13 @@
                 arrow.addEventListener('click', () => {
                     const step = arrow.textContent.trim() === '→' ? 1 : -1;
                     updateViewer(step);
+                    arrow.classList.add('clicked');
+                    setTimeout(() => arrow.classList.remove('clicked'), 350);
                 });
+            });
+
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
             });
         })();
     </script>
