@@ -240,16 +240,15 @@
             gap: 18px;
             justify-items: center;
             align-items: center;
-            justify-content: center;
             row-gap: 14px;
             align-self: center;
         }
 
         .certificate-heading {
+            grid-column: 1 / -1;
             text-align: center;
             display: grid;
             gap: 6px;
-            grid-column: 1 / -1;
         }
 
         .certificate-heading h3 {
@@ -266,62 +265,91 @@
             text-transform: uppercase;
         }
 
-        .certificate-placeholder {
-            border-radius: 18px;
-            border: 2px dashed rgba(122, 201, 67, 0.55);
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.06), rgba(0, 174, 239, 0.08));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #3a8f4c;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 18px;
-            text-align: center;
-            aspect-ratio: 210 / 297;
-            width: 100%;
-            max-width: 310px;
-            position: relative;
-            overflow: hidden;
-            animation: pulseGlow 6s ease-in-out infinite;
-        }
-
-        .certificate-placeholder::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(255,255,255,0.35);
-            transform: translateX(-120%);
-            pointer-events: none;
-        }
-
-        .certificate-placeholder.page-transition::after {
-            animation: pageSwipe 0.55s ease forwards;
-        }
-
-        .certificate-placeholder.flip {
-            animation: cardFlip 0.45s ease;
-        }
-
         .nav-arrow {
             width: 44px;
             height: 44px;
             border-radius: 50%;
             background: rgba(0, 84, 166, 0.12);
+            border: 1px solid rgba(0, 84, 166, 0.2);
+            color: rgba(0, 84, 166, 0.85);
+            font-size: 20px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(0, 84, 166, 0.7);
-            font-size: 20px;
-            font-weight: 700;
-            border: 1px solid rgba(0, 84, 166, 0.2);
             cursor: pointer;
             transition: transform 0.2s ease, background 0.2s ease;
         }
 
         .nav-arrow:hover {
             transform: scale(1.05);
-            background: rgba(0, 84, 166, 0.18);
+            background: rgba(0, 84, 166, 0.2);
+        }
+
+        .nav-arrow:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.35);
+        }
+
+        .certificate-slide {
+            position: relative;
+            display: grid;
+            gap: 12px;
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 84, 166, 0.18);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .certificate-slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.25;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-slide:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+        }
+
+        .certificate-slide:hover::before {
+            opacity: 0.5;
+        }
+
+        .certificate-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 22px rgba(0, 84, 166, 0.18);
+            background: #fff;
+        }
+
+        .certificate-caption {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .certificate-slide.transitioning {
+            animation: slideFade 0.45s ease;
+        }
+
+        .nav-arrow.clicked {
+            animation: arrowPop 0.35s ease;
         }
 
         .callout-section {
@@ -373,32 +401,22 @@
             }
         }
 
-        @keyframes pulseGlow {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.28);
+        @keyframes slideFade {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
             }
-            50% {
-                box-shadow: 0 0 0 12px rgba(0, 174, 239, 0);
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
         @keyframes arrowPop {
             0% { transform: scale(1); }
-            40% { transform: scale(1.25); }
+            40% { transform: scale(1.2); }
             70% { transform: scale(0.95); }
             100% { transform: scale(1); }
-        }
-
-        @keyframes pageSwipe {
-            0% { transform: translateX(-120%); opacity: 0.6; }
-            50% { transform: translateX(0); opacity: 0.25; }
-            100% { transform: translateX(120%); opacity: 0; }
-        }
-
-        @keyframes cardFlip {
-            0% { transform: rotateY(0deg); }
-            50% { transform: rotateY(12deg); }
-            100% { transform: rotateY(0deg); }
         }
 
         @keyframes swipeShimmer {
@@ -418,14 +436,6 @@
         body.loaded .certificate-section,
         body.loaded .callout-section {
             animation-play-state: running;
-        }
-
-        .certificate-placeholder {
-            animation: pulseGlow 6s ease-in-out infinite;
-        }
-
-        .nav-arrow.clicked {
-            animation: arrowPop 0.35s ease;
         }
 
         .integrity-emphasis {
@@ -448,8 +458,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .certificate-placeholder {
-                min-height: 260px;
+            .certificate-slide img {
+                height: auto;
             }
         }
 
@@ -488,9 +498,6 @@
             <div class="hero-content">
                 <h2>Dürüstlük Üzərində Qurulan Holcim Mədəniyyəti</h2>
                 <p>Biz hər zaman qanunlara, daxili qaydalarımıza və ən yüksək etik prinsiplərə əməl edirik. Bizim üçün dürüstlük, şəffaflıq və tərəfdaşlarla açıq münasibət əsas dəyərlərdir. Davranış Kodeksi bütün iş fəaliyyətlərimizin əsasını təşkil edir və bütün əməkdaşlarımız üçün məcburidir. Sağlam düşüncə və ümumi məntiqə əsaslanaraq, bütün fəaliyyətlərimizi ədalətli, məsuliyyətli və hər kəs üçün təhlükəsiz şəkildə həyata keçirməyə çalışırıq.</p>
-                <div class="link-placeholder">
-                    Davranış Kodeksinə keçid üçün yer
-                </div>
             </div>
         </section>
 
@@ -498,17 +505,17 @@
             <article class="feature-card">
                 <h3>İşçilər üçün Davranış Kodeksi</h3>
                 <p>Holcim-də Davranış Kodeksi hər gün verdiyimiz qərarlara istiqamət verir. Dürüstlük və şəffaflıq iş mədəniyyətimizin ayrılmaz hissəsi olaraq qalır və şirkət daxilində etibarı möhkəmləndirir.</p>
-                <div class="link-placeholder">
+                <a class="link-placeholder" href="https://www.holcim.az/sites/azerbaijan/files/docs/code-of-business-conduct-cobc-2021_eng-aze.pdf" target="_blank" rel="noopener">
                     Davranış Kodeksinin sənədi
-                </div>
+                </a>
             </article>
 
             <article class="feature-card">
                 <h3>Təchizatçılar üçün Davranış Kodeksi</h3>
                 <p>Holcim dayanıqlı inkişafa sadiq olan təchizatçılarla əməkdaşlığa üstünlük verir. Məqsədimiz müştərilərimiz üçün səmərəli satınalma prosesini təmin etmək və məsuliyyətli təchizat zəncirinin idarə olunmasını nümayiş etdirmək üçün təchizatçılarla birgə çalışmaqdır.</p>
-                <div class="link-placeholder">
+                <a class="link-placeholder" href="https://www.holcim.az/sites/azerbaijan/files/docs/code-of-business-conduct-for-suppliers-2021_eng-aze.pdf" target="_blank" rel="noopener">
                     Təchizatçılar üçün Davranış Kodeksi
-                </div>
+                </a>
             </article>
         </section>
 
@@ -520,9 +527,12 @@
                         <h3>ISO 37001:2016 Sertifikatı</h3>
                         <span>Korrupsiyaya Qarşı İdarəetmə Sistemi</span>
                     </div>
-                    <div class="nav-arrow">←</div>
-                    <div class="certificate-placeholder">Sertifikatın 1-ci səhifəsi üçün yer</div>
-                    <div class="nav-arrow">→</div>
+                    <button class="nav-arrow" type="button" data-direction="-1" aria-label="Əvvəlki sertifikat">←</button>
+                    <a class="certificate-slide" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf" target="_blank" rel="noopener">
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png" alt="ISO 37001 Sertifikatı - 2023-2024 illər" />
+                        <span class="certificate-caption">ISO 37001 Sertifikatı - 2023-2024 illər</span>
+                    </a>
+                    <button class="nav-arrow" type="button" data-direction="1" aria-label="Növbəti sertifikat">→</button>
                 </div>
             </div>
         </section>
@@ -535,48 +545,65 @@
         </section>
     </div>
     <script>
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
         (function(){
-            const placeholders = [
-                'Sertifikatın 1-ci səhifəsi üçün yer',
-                'Sertifikatın 2-ci səhifəsi üçün yer'
+            const slides = [
+                {
+                    img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png',
+                    alt: 'ISO 37001 Sertifikatı - 2023-2024 illər',
+                    caption: 'ISO 37001 Sertifikatı - 2023-2024 illər',
+                    href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf'
+                },
+                {
+                    img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_2.png',
+                    alt: 'ISO 37001 Sertifikatı - 2024-2025 illər',
+                    caption: 'ISO 37001 Sertifikatı - 2024-2025 illər',
+                    href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_2.pdf'
+                },
+                {
+                    img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_3.png',
+                    alt: 'ISO 37001 Sertifikatı - 2025-2026 illər',
+                    caption: 'ISO 37001 Sertifikatı - 2025-2026 illər',
+                    href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_3.pdf'
+                }
             ];
+
+            const slideLink = document.querySelector('.certificate-slide');
+            if (!slideLink) return;
+
+            const slideImg = slideLink.querySelector('img');
+            const slideCaption = slideLink.querySelector('.certificate-caption');
+            const arrows = document.querySelectorAll('.nav-arrow');
             let index = 0;
 
-            const viewer = document.querySelector('.certificate-placeholder');
-            const arrows = document.querySelectorAll('.nav-arrow');
+            function renderSlide(idx) {
+                const data = slides[idx];
+                slideLink.href = data.href;
+                slideImg.src = data.img;
+                slideImg.alt = data.alt;
+                slideCaption.textContent = data.caption;
 
-            function updateViewer(step){
-                index = (index + step + placeholders.length) % placeholders.length;
-                viewer.textContent = placeholders[index];
-                viewer.classList.remove('page-transition');
-                void viewer.offsetWidth;
-                viewer.classList.add('page-transition');
-                viewer.classList.remove('flip');
-                void viewer.offsetWidth;
-                viewer.classList.add('flip');
+                slideLink.classList.remove('transitioning');
+                void slideLink.offsetWidth;
+                slideLink.classList.add('transitioning');
             }
 
-            arrows.forEach(arrow => {
-                arrow.addEventListener('click', () => {
-                    const step = arrow.textContent.trim() === '→' ? 1 : -1;
-                    updateViewer(step);
-                    arrow.classList.add('clicked');
-                    setTimeout(() => arrow.classList.remove('clicked'), 350);
+            arrows.forEach(btn => {
+                const direction = parseInt(btn.dataset.direction, 10) || 0;
+                btn.addEventListener('click', () => {
+                    index = (index + direction + slides.length) % slides.length;
+                    renderSlide(index);
+
+                    btn.classList.remove('clicked');
+                    void btn.offsetWidth;
+                    btn.classList.add('clicked');
                 });
             });
 
-            window.addEventListener('load', () => {
-                document.body.classList.add('loaded');
-            });
-
-            viewer.addEventListener('animationend', (event) => {
-                if (event.animationName === 'cardFlip') {
-                    viewer.classList.remove('flip');
-                }
-                if (event.animationName === 'pageSwipe') {
-                    viewer.classList.remove('page-transition');
-                }
-            });
+            renderSlide(index);
         })();
     </script>
 </body>
