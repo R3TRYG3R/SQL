@@ -329,10 +329,11 @@
 
         .certificate-slide img {
             width: 100%;
-            aspect-ratio: 210 / 297;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
             border-radius: 12px;
             box-shadow: 0 10px 22px rgba(0, 84, 166, 0.18);
+            background: #fff;
         }
 
         .certificate-caption {
@@ -458,7 +459,7 @@
             }
 
             .certificate-slide img {
-                aspect-ratio: 3 / 4;
+                height: auto;
             }
         }
 
@@ -528,8 +529,8 @@
                     </div>
                     <button class="nav-arrow" type="button" data-direction="-1" aria-label="Əvvəlki sertifikat">←</button>
                     <a class="certificate-slide" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf" target="_blank" rel="noopener">
-                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png" alt="ISO 37001 Sertifikatı - Səhifə 1" />
-                        <span class="certificate-caption">ISO 37001 Sertifikatı - Səhifə 1</span>
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png" alt="ISO 37001 Sertifikatı - 2023-2024 iller" />
+                        <span class="certificate-caption">ISO 37001 Sertifikatı - 2023-2024 iller</span>
                     </a>
                     <button class="nav-arrow" type="button" data-direction="1" aria-label="Növbəti sertifikat">→</button>
                 </div>
@@ -552,20 +553,20 @@
             const slides = [
                 {
                     img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png',
-                    alt: 'ISO 37001 Sertifikatı - Səhifə 1',
-                    caption: 'ISO 37001 Sertifikatı - Səhifə 1',
+                    alt: 'ISO 37001 Sertifikatı - 2023-2024 iller',
+                    caption: 'ISO 37001 Sertifikatı - 2023-2024 iller',
                     href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf'
                 },
                 {
                     img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_2.png',
-                    alt: 'ISO 37001 Sertifikatı - Səhifə 2',
-                    caption: 'ISO 37001 Sertifikatı - Səhifə 2',
+                    alt: 'ISO 37001 Sertifikatı - 2024-2025 iller',
+                    caption: 'ISO 37001 Sertifikatı - 2024-2025 iller',
                     href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_2.pdf'
                 },
                 {
                     img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_3.png',
-                    alt: 'ISO 37001 Sertifikatı - Səhifə 3',
-                    caption: 'ISO 37001 Sertifikatı - Səhifə 3',
+                    alt: 'ISO 37001 Sertifikatı - 2025-2026 iller',
+                    caption: 'ISO 37001 Sertifikatı - 2025-2026 iller',
                     href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_3.pdf'
                 }
             ];
