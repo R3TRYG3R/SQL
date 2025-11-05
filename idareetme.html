@@ -234,15 +234,12 @@
             align-self: center;
         }
 
-        .certificate-viewer {
+        .certificate-gallery {
             display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             justify-items: center;
-            align-items: center;
-            justify-content: center;
-            row-gap: 14px;
-            align-self: center;
+            align-items: start;
         }
 
         .certificate-heading {
@@ -266,62 +263,55 @@
             text-transform: uppercase;
         }
 
-        .certificate-placeholder {
-            border-radius: 18px;
-            border: 2px dashed rgba(122, 201, 67, 0.55);
-            background: linear-gradient(135deg, rgba(122, 201, 67, 0.06), rgba(0, 174, 239, 0.08));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #3a8f4c;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 18px;
-            text-align: center;
-            aspect-ratio: 210 / 297;
-            width: 100%;
-            max-width: 310px;
+        .certificate-card {
             position: relative;
-            overflow: hidden;
-            animation: pulseGlow 6s ease-in-out infinite;
+            display: grid;
+            gap: 12px;
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(0, 84, 166, 0.18);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .certificate-placeholder::after {
+        .certificate-card::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(255,255,255,0.35);
-            transform: translateX(-120%);
-            pointer-events: none;
+            border-radius: 18px;
+            padding: 2px;
+            background: var(--grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
         }
 
-        .certificate-placeholder.page-transition::after {
-            animation: pageSwipe 0.55s ease forwards;
+        .certificate-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(0,0,0,0.12);
         }
 
-        .certificate-placeholder.flip {
-            animation: cardFlip 0.45s ease;
+        .certificate-card:hover::before {
+            opacity: 0.5;
         }
 
-        .nav-arrow {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(0, 84, 166, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(0, 84, 166, 0.7);
-            font-size: 20px;
-            font-weight: 700;
-            border: 1px solid rgba(0, 84, 166, 0.2);
-            cursor: pointer;
-            transition: transform 0.2s ease, background 0.2s ease;
+        .certificate-card img {
+            width: 100%;
+            aspect-ratio: 210 / 297;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 22px rgba(0, 84, 166, 0.18);
         }
 
-        .nav-arrow:hover {
-            transform: scale(1.05);
-            background: rgba(0, 84, 166, 0.18);
+        .certificate-card span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: 0.3px;
         }
 
         .callout-section {
@@ -373,34 +363,6 @@
             }
         }
 
-        @keyframes pulseGlow {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.28);
-            }
-            50% {
-                box-shadow: 0 0 0 12px rgba(0, 174, 239, 0);
-            }
-        }
-
-        @keyframes arrowPop {
-            0% { transform: scale(1); }
-            40% { transform: scale(1.25); }
-            70% { transform: scale(0.95); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes pageSwipe {
-            0% { transform: translateX(-120%); opacity: 0.6; }
-            50% { transform: translateX(0); opacity: 0.25; }
-            100% { transform: translateX(120%); opacity: 0; }
-        }
-
-        @keyframes cardFlip {
-            0% { transform: rotateY(0deg); }
-            50% { transform: rotateY(12deg); }
-            100% { transform: rotateY(0deg); }
-        }
-
         @keyframes swipeShimmer {
             0% { transform: translateX(-110%); opacity: 0.8; }
             100% { transform: translateX(110%); opacity: 0; }
@@ -418,14 +380,6 @@
         body.loaded .certificate-section,
         body.loaded .callout-section {
             animation-play-state: running;
-        }
-
-        .certificate-placeholder {
-            animation: pulseGlow 6s ease-in-out infinite;
-        }
-
-        .nav-arrow.clicked {
-            animation: arrowPop 0.35s ease;
         }
 
         .integrity-emphasis {
@@ -448,8 +402,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .certificate-placeholder {
-                min-height: 260px;
+            .certificate-card img {
+                aspect-ratio: 3 / 4;
             }
         }
 
@@ -512,14 +466,23 @@
         <section class="certificate-section">
             <div class="certificate-grid">
                 <p class="certificate-text">Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
-                <div class="certificate-viewer">
+                <div class="certificate-gallery">
                     <div class="certificate-heading">
                         <h3>ISO 37001:2016 Sertifikatı</h3>
                         <span>Korrupsiyaya Qarşı İdarəetmə Sistemi</span>
                     </div>
-                    <div class="nav-arrow">←</div>
-                    <div class="certificate-placeholder">Sertifikatın 1-ci səhifəsi üçün yer</div>
-                    <div class="nav-arrow">→</div>
+                    <a class="certificate-card" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf" target="_blank" rel="noopener">
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png" alt="ISO 37001 Sertifikatı - Səhifə 1" />
+                        <span>ISO 37001 Sertifikatı - Səhifə 1</span>
+                    </a>
+                    <a class="certificate-card" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_2.pdf" target="_blank" rel="noopener">
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_2.png" alt="ISO 37001 Sertifikatı - Səhifə 2" />
+                        <span>ISO 37001 Sertifikatı - Səhifə 2</span>
+                    </a>
+                    <a class="certificate-card" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_3.pdf" target="_blank" rel="noopener">
+                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_3.png" alt="ISO 37001 Sertifikatı - Səhifə 3" />
+                        <span>ISO 37001 Sertifikatı - Səhifə 3</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -532,49 +495,9 @@
         </section>
     </div>
     <script>
-        (function(){
-            const placeholders = [
-                'Sertifikatın 1-ci səhifəsi üçün yer',
-                'Sertifikatın 2-ci səhifəsi üçün yer'
-            ];
-            let index = 0;
-
-            const viewer = document.querySelector('.certificate-placeholder');
-            const arrows = document.querySelectorAll('.nav-arrow');
-
-            function updateViewer(step){
-                index = (index + step + placeholders.length) % placeholders.length;
-                viewer.textContent = placeholders[index];
-                viewer.classList.remove('page-transition');
-                void viewer.offsetWidth;
-                viewer.classList.add('page-transition');
-                viewer.classList.remove('flip');
-                void viewer.offsetWidth;
-                viewer.classList.add('flip');
-            }
-
-            arrows.forEach(arrow => {
-                arrow.addEventListener('click', () => {
-                    const step = arrow.textContent.trim() === '→' ? 1 : -1;
-                    updateViewer(step);
-                    arrow.classList.add('clicked');
-                    setTimeout(() => arrow.classList.remove('clicked'), 350);
-                });
-            });
-
-            window.addEventListener('load', () => {
-                document.body.classList.add('loaded');
-            });
-
-            viewer.addEventListener('animationend', (event) => {
-                if (event.animationName === 'cardFlip') {
-                    viewer.classList.remove('flip');
-                }
-                if (event.animationName === 'pageSwipe') {
-                    viewer.classList.remove('page-transition');
-                }
-            });
-        })();
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
     </script>
 </body>
 </html>
