@@ -234,19 +234,21 @@
             align-self: center;
         }
 
-        .certificate-gallery {
+        .certificate-viewer {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
             justify-items: center;
-            align-items: start;
+            align-items: center;
+            row-gap: 14px;
+            align-self: center;
         }
 
         .certificate-heading {
+            grid-column: 1 / -1;
             text-align: center;
             display: grid;
             gap: 6px;
-            grid-column: 1 / -1;
         }
 
         .certificate-heading h3 {
@@ -263,20 +265,46 @@
             text-transform: uppercase;
         }
 
-        .certificate-card {
+        .nav-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 84, 166, 0.12);
+            border: 1px solid rgba(0, 84, 166, 0.2);
+            color: rgba(0, 84, 166, 0.85);
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.05);
+            background: rgba(0, 84, 166, 0.2);
+        }
+
+        .nav-arrow:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.35);
+        }
+
+        .certificate-slide {
             position: relative;
             display: grid;
             gap: 12px;
             padding: 18px;
             border-radius: 18px;
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(0, 84, 166, 0.18);
             text-decoration: none;
             color: var(--text-dark);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .certificate-card::before {
+        .certificate-slide::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -286,20 +314,20 @@
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-            opacity: 0.2;
+            opacity: 0.25;
             transition: opacity 0.3s ease;
         }
 
-        .certificate-card:hover {
+        .certificate-slide:hover {
             transform: translateY(-4px);
             box-shadow: 0 18px 36px rgba(0,0,0,0.12);
         }
 
-        .certificate-card:hover::before {
+        .certificate-slide:hover::before {
             opacity: 0.5;
         }
 
-        .certificate-card img {
+        .certificate-slide img {
             width: 100%;
             aspect-ratio: 210 / 297;
             object-fit: cover;
@@ -307,11 +335,20 @@
             box-shadow: 0 10px 22px rgba(0, 84, 166, 0.18);
         }
 
-        .certificate-card span {
+        .certificate-caption {
             font-size: 14px;
             font-weight: 600;
-            color: var(--text-dark);
             letter-spacing: 0.3px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .certificate-slide.transitioning {
+            animation: slideFade 0.45s ease;
+        }
+
+        .nav-arrow.clicked {
+            animation: arrowPop 0.35s ease;
         }
 
         .callout-section {
@@ -363,6 +400,24 @@
             }
         }
 
+        @keyframes slideFade {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes arrowPop {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.2); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
         @keyframes swipeShimmer {
             0% { transform: translateX(-110%); opacity: 0.8; }
             100% { transform: translateX(110%); opacity: 0; }
@@ -402,7 +457,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .certificate-card img {
+            .certificate-slide img {
                 aspect-ratio: 3 / 4;
             }
         }
@@ -466,23 +521,17 @@
         <section class="certificate-section">
             <div class="certificate-grid">
                 <p class="certificate-text">Artıq 2023-cü ildən Holcim Azərbaycan ISO 37001:2016 Korrupsiyaya Qarşı İdarəetmə Sistemi Sertifikatına malikdir. 2025-ci ildə şirkət bu sertifikatı uğurla yeniləyərək düzgünlük, şəffaflıq və etik dəyərlərə sadiqliyini bir daha təsdiqlədi. Cari ildə keçirilən “Surveillance 2“ auditi uğurla tamamlanaraq Holcim-in korrupsiyaya qarşı beynəlxalq standartlara tam uyğun fəaliyyət göstərdiyini və etik idarəetmənin şirkət mədəniyyətinin əsas hissəsi olduğunu bir daha göstərdi.</p>
-                <div class="certificate-gallery">
+                <div class="certificate-viewer">
                     <div class="certificate-heading">
                         <h3>ISO 37001:2016 Sertifikatı</h3>
                         <span>Korrupsiyaya Qarşı İdarəetmə Sistemi</span>
                     </div>
-                    <a class="certificate-card" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf" target="_blank" rel="noopener">
+                    <button class="nav-arrow" type="button" data-direction="-1" aria-label="Əvvəlki sertifikat">←</button>
+                    <a class="certificate-slide" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf" target="_blank" rel="noopener">
                         <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png" alt="ISO 37001 Sertifikatı - Səhifə 1" />
-                        <span>ISO 37001 Sertifikatı - Səhifə 1</span>
+                        <span class="certificate-caption">ISO 37001 Sertifikatı - Səhifə 1</span>
                     </a>
-                    <a class="certificate-card" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_2.pdf" target="_blank" rel="noopener">
-                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_2.png" alt="ISO 37001 Sertifikatı - Səhifə 2" />
-                        <span>ISO 37001 Sertifikatı - Səhifə 2</span>
-                    </a>
-                    <a class="certificate-card" href="https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_3.pdf" target="_blank" rel="noopener">
-                        <img src="https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_3.png" alt="ISO 37001 Sertifikatı - Səhifə 3" />
-                        <span>ISO 37001 Sertifikatı - Səhifə 3</span>
-                    </a>
+                    <button class="nav-arrow" type="button" data-direction="1" aria-label="Növbəti sertifikat">→</button>
                 </div>
             </div>
         </section>
@@ -498,6 +547,63 @@
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
         });
+
+        (function(){
+            const slides = [
+                {
+                    img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_1.png',
+                    alt: 'ISO 37001 Sertifikatı - Səhifə 1',
+                    caption: 'ISO 37001 Sertifikatı - Səhifə 1',
+                    href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_1.pdf'
+                },
+                {
+                    img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_2.png',
+                    alt: 'ISO 37001 Sertifikatı - Səhifə 2',
+                    caption: 'ISO 37001 Sertifikatı - Səhifə 2',
+                    href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_2.pdf'
+                },
+                {
+                    img: 'https://www.holcim.az/sites/azerbaijan/files/img/certificate_photo_3.png',
+                    alt: 'ISO 37001 Sertifikatı - Səhifə 3',
+                    caption: 'ISO 37001 Sertifikatı - Səhifə 3',
+                    href: 'https://www.holcim.az/sites/azerbaijan/files/docs/certificate_idareetme_3.pdf'
+                }
+            ];
+
+            const slideLink = document.querySelector('.certificate-slide');
+            if (!slideLink) return;
+
+            const slideImg = slideLink.querySelector('img');
+            const slideCaption = slideLink.querySelector('.certificate-caption');
+            const arrows = document.querySelectorAll('.nav-arrow');
+            let index = 0;
+
+            function renderSlide(idx) {
+                const data = slides[idx];
+                slideLink.href = data.href;
+                slideImg.src = data.img;
+                slideImg.alt = data.alt;
+                slideCaption.textContent = data.caption;
+
+                slideLink.classList.remove('transitioning');
+                void slideLink.offsetWidth;
+                slideLink.classList.add('transitioning');
+            }
+
+            arrows.forEach(btn => {
+                const direction = parseInt(btn.dataset.direction, 10) || 0;
+                btn.addEventListener('click', () => {
+                    index = (index + direction + slides.length) % slides.length;
+                    renderSlide(index);
+
+                    btn.classList.remove('clicked');
+                    void btn.offsetWidth;
+                    btn.classList.add('clicked');
+                });
+            });
+
+            renderSlide(index);
+        })();
     </script>
 </body>
 </html>
